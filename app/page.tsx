@@ -1,11 +1,17 @@
-import MainPageUserSelections from '@/components/MainPageUserSelections/MainPageUserSelections';
+'use client';
+
+import Navbar from '@/components/Navbar/Navbar';
+import Logo from '@/components/Logo/Logo';
+import Sidebar from '@/components/Sidebar/Sidebar';
+import MainPage from '@/components/mainPage/mainPage';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-gray-600 col-start-2 col-end-13 row-start-2 row-end-11">
-      <div>
-        <MainPageUserSelections />
-      </div>
-    </main>
+    <div className="{`${inter.className} `} grid grid-cols-[1fr,150px,repeat(10,1fr)] grid-rows-10">
+      <Logo />
+      <Navbar />
+      <Sidebar />
+      <MainPage />
+    </div>
   );
 }

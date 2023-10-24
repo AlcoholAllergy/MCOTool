@@ -1,12 +1,6 @@
-'use client';
 import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { Provider } from 'react-redux';
-import { store } from '@/redux/store';
-import Navbar from '@/components/Navbar/Navbar';
-import Logo from '@/components/Logo/Logo';
-import Sidebar from '@/components/Sidebar/Sidebar';
+
+import { Providers } from '@/redux/provider';
 
 // export const metadata: Metadata = {
 //   title: 'Notes Generator',
@@ -21,14 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Provider store={store}>
-          <div className="{`${inter.className} `} grid grid-cols-12 grid-rows-10">
-            <Logo />
-            <Navbar />
-            <Sidebar />
-            {children}
-          </div>
-        </Provider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
