@@ -1,7 +1,6 @@
 import React from 'react';
 
 import SystemItem from './SystemItem/SystemItem';
-import SystemList from './data/SystemList';
 import layerTree from '@/static/layerTreeConfig';
 
 const ProcessingSystemOptions = () => {

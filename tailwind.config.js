@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // width: {
+      //   '80vw': '80vw',
+      // },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -14,5 +17,17 @@ module.exports = {
       },
     },
   },
-  plugins: [],
-}
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: [
+      {
+        cyberpunk: {
+          ...require('daisyui/src/theming/themes')['[data-theme=light]'],
+          primary: 'blue',
+          'primary-focus': 'mediumblue',
+          '--tab-border': '5px',
+        },
+      },
+    ],
+  },
+};

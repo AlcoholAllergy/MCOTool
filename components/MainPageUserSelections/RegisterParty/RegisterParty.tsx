@@ -9,6 +9,8 @@ import {
   setCurrentRegisterParty,
   setFileOptionList,
   setFinalType,
+  setFileOption,
+  setFileStatus,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const RegisterParty = () => {
@@ -35,25 +37,25 @@ const RegisterParty = () => {
       dispatch(setCurrentRegisterParty(name));
       dispatch(setLayerCount(2));
       dispatch(setFinalType(''));
+      dispatch(setFileOption(''));
+      dispatch(setFileStatus(''));
     };
   };
 
   return (
-    <div className="flex justify-start items-center mt-[-50px]">
+    <div className="tabs mt-[-50px] min-h-[50px]">
       {registerPartiesList.map((party) => {
         const selected = party.name === selectedRegisterParty;
         return (
-          <p
-            className={`truncate select-none m-0 py-2 px-4  text-white bg-gray-900 cursor-pointer duration-300 text-xl ${
-              selected
-                ? 'bg-gray-400  scale-95  '
-                : 'bg-gray-900 hover:bg-yellow-400 hover:scale-90'
+          <a
+            className={`tab tab-lifted tab-lg font-semibold text-gray-300 hover:scale-105 hover:bg-slate-400 ${
+              selected ? 'tab-active bg-secondary text-gray-600' : null
             }`}
             key={party.id}
             onClick={onClickHandler(party.name)}
           >
             {party.name}
-          </p>
+          </a>
         );
       })}
     </div>

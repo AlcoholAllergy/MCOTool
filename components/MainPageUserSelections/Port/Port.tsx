@@ -6,10 +6,13 @@ import {
   setLayerCount,
   setPortType,
   setMortgageAmountAdjustmentList,
+  setHowExistingMtgMoveList,
+  setFinalType,
+  setFileStatus,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const Port = () => {
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
 
   const { portType, portTypesList } = useSelector(
     (state: RootState) => state.userSelect.port,
@@ -18,22 +21,25 @@ const Port = () => {
   //handle all the envents once user click the bottom
   const onClickHandler = (option: any) => {
     return (e: MouseEvent) => {
-      dispach(setPortType(option.name));
-      dispach(setLayerCount(4));
-      dispach(setMortgageAmountAdjustmentList(option.mortgageAmountAdjustment));
+      dispatch(setPortType(option.name));
+      dispatch(setLayerCount(4));
+      dispatch(
+        setMortgageAmountAdjustmentList(option.mortgageAmountAdjustment),
+      );
+      dispatch(setHowExistingMtgMoveList([]));
+      dispatch(setFinalType(''));
+      dispatch(setFileStatus(''));
     };
   };
 
   return (
-    <div className="flex justify-start items-center mt-[-50px]">
+    <div className="tabs mt-[-50px] min-h-[50px]">
       {portTypesList.map((option) => {
         const selected = option.name === portType;
         return (
           <p
-            className={`truncate select-none m-0 py-2 px-4  text-white bg-gray-900 cursor-pointer duration-300 text-xl ${
-              selected
-                ? 'bg-gray-400  scale-95  '
-                : 'bg-gray-900 hover:bg-yellow-400 hover:scale-90'
+            className={`tab tab-lifted tab-lg font-semibold text-gray-300 hover:scale-105 hover:bg-slate-400 ${
+              selected ? 'tab-active bg-secondary text-gray-600' : null
             }`}
             key={option.id}
             onClick={onClickHandler(option)}

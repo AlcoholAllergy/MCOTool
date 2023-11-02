@@ -6,10 +6,11 @@ import {
   setLayerCount,
   setAdjustment,
   setFinalType,
+  setFileStatus,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const MortgageAmountAdjustment = () => {
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
 
   const { mortgageAmountAdjustmentList, adjustment } = useSelector(
     (state: RootState) => state.userSelect.port,
@@ -18,21 +19,20 @@ const MortgageAmountAdjustment = () => {
   //handle all the envents once user click the bottom
   const onClickHandler = (option: any) => {
     return (e: MouseEvent) => {
-      dispach(setAdjustment(option.name));
-      dispach(setFinalType(option.transactionType));
+      dispatch(setAdjustment(option.name));
+      dispatch(setFinalType(option.transactionType));
+      dispatch(setFileStatus(''));
     };
   };
 
   return (
-    <div className="flex justify-start items-center mt-[-50px]">
+    <div className="tabs mt-[-50px] min-h-[50px]">
       {mortgageAmountAdjustmentList.map((option) => {
         const selected = option.name === adjustment;
         return (
           <p
-            className={`truncate select-none m-0 py-2 px-4  text-white bg-gray-900 cursor-pointer duration-300 text-xl ${
-              selected
-                ? 'bg-gray-400  scale-95  '
-                : 'bg-gray-900 hover:bg-yellow-400 hover:scale-90'
+            className={`tab tab-lifted tab-lg font-semibold text-gray-300 hover:scale-105  hover:bg-slate-400 ${
+              selected ? 'tab-active bg-secondary text-gray-600' : null
             }`}
             key={option.id}
             onClick={onClickHandler(option)}

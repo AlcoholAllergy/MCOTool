@@ -7,10 +7,11 @@ import {
   setIfBorrowerChange,
   setHowExistingMtgMoveList,
   setFinalType,
+  setFileStatus,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const BorrowerOption = () => {
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
 
   const { borrowerChangeList, ifBorrowerChange } = useSelector(
     (state: RootState) => state.userSelect,
@@ -19,23 +20,22 @@ const BorrowerOption = () => {
   //handle all the envents once user click the bottom
   const onClickHandler = (option: any) => {
     return (e: MouseEvent) => {
-      dispach(setIfBorrowerChange(option.ifBorrowerChange));
-      dispach(setLayerCount(4));
-      dispach(setHowExistingMtgMoveList(option.howExistingMtgMove));
-      dispach(setFinalType(''));
+      dispatch(setIfBorrowerChange(option.ifBorrowerChange));
+      dispatch(setLayerCount(4));
+      dispatch(setHowExistingMtgMoveList(option.howExistingMtgMove));
+      dispatch(setFinalType(''));
+      dispatch(setFileStatus(''));
     };
   };
 
   return (
-    <div className="flex justify-start items-center mt-[-50px]">
+    <div className="tabs mt-[-50px] min-h-[50px]">
       {borrowerChangeList.map((option) => {
         const selected = option.ifBorrowerChange === ifBorrowerChange;
         return (
           <p
-            className={`truncate select-none m-0 py-2 px-4  text-white bg-gray-900 cursor-pointer duration-300 text-xl ${
-              selected
-                ? 'bg-gray-400  scale-95  '
-                : 'bg-gray-900 hover:bg-yellow-400 hover:scale-90'
+            className={`tab tab-lifted tab-lg font-semibold text-gray-300 hover:scale-105 hover:bg-slate-400 ${
+              selected ? 'tab-active bg-secondary text-gray-600' : null
             }`}
             key={option.id}
             onClick={onClickHandler(option)}

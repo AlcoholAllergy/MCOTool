@@ -26,7 +26,11 @@ type FileOption = {
 type PortType = {
   layerCount: 4;
   id: number;
-  name: 'Same-day' | 'Purchase Prior to sale' | 'Sale prior to purcase';
+  name:
+    | 'Same-day'
+    | 'Purchase Prior to sale'
+    | 'Sale prior to purcase'
+    | 'Port to current Owned Property has to be a Same-day port';
   mortgageAmountAdjustment: AmountAdjustmentType[];
 };
 
@@ -135,6 +139,182 @@ const layerTree: System[] = [
                 howExistingMtgMove: [
                   {
                     id: 1,
+                    name: 'No New Allocation',
+                    transactionType:
+                      'HLP Limit Increase with No New Allocation',
+                  },
+                  {
+                    id: 2,
+                    name: 'New RCL Only',
+                    transactionType: 'HLP Limit Increase with New RCL Only',
+                  },
+                  {
+                    id: 3,
+                    name: 'New Mortgage Seg',
+                    transactionType: 'HLP Limit Increase with New Mortgage Seg',
+                  },
+                ],
+              },
+              {
+                layerCount: 4,
+                id: 2,
+                name: 'Borrower Changes',
+                ifBorrowerChange: true,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'Existing MTG is moving as is into a HLP',
+                    transactionType: 'Add/Remove borrower',
+                  },
+                  {
+                    id: 2,
+                    name: 'HLP MTG seg has a new term',
+                    transactionType: 'Refinance',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            layerCount: 3,
+            id: 5,
+            name: 'Port',
+            portTypes: [
+              {
+                layerCount: 4,
+                id: 1,
+                name: 'Same-day',
+                mortgageAmountAdjustment: [
+                  {
+                    layerCount: 5,
+                    id: 1,
+                    name: 'Straight',
+                    transactionType: 'Same-day Straight Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 2,
+                    name: 'Increase',
+                    transactionType: 'Same-day Increase Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 3,
+                    name: 'Decrease',
+                    transactionType: 'Same-day Decrease Port',
+                  },
+                ],
+              },
+              {
+                layerCount: 4,
+                id: 2,
+                name: 'Purchase Prior to sale',
+                mortgageAmountAdjustment: [
+                  {
+                    layerCount: 5,
+                    id: 1,
+                    name: 'Straight',
+                    transactionType: 'Purchase Prior to sale Straight Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 2,
+                    name: 'Increase',
+                    transactionType: 'Purchase Prior to sale Increase Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 3,
+                    name: 'Decrease',
+                    transactionType: 'Purchase Prior to sale Decrease Port',
+                  },
+                ],
+              },
+              {
+                layerCount: 4,
+                id: 3,
+                name: 'Sale prior to purcase',
+                mortgageAmountAdjustment: [
+                  {
+                    layerCount: 5,
+                    id: 1,
+                    name: 'Straight',
+                    transactionType: 'Sale Prior to Purchase Straight Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 2,
+                    name: 'Increase',
+                    transactionType: 'Sale Prior to Purchase Increase Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 3,
+                    name: 'Decrease',
+                    transactionType: 'Sale Prior to Purchase Decrease Port',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            layerCount: 3,
+            id: 6,
+            name: 'Port to Owned',
+            portTypes: [
+              {
+                layerCount: 4,
+                id: 1,
+                name: 'Port to current Owned Property has to be a Same-day port',
+                mortgageAmountAdjustment: [
+                  {
+                    layerCount: 5,
+                    id: 1,
+                    name: 'Straight',
+                    transactionType: 'Same-day Straight Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 2,
+                    name: 'Increase',
+                    transactionType: 'Same-day Increase Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 3,
+                    name: 'Decrease',
+                    transactionType: 'Same-day Decrease Port',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        layerCount: 2,
+        id: 2,
+        name: 'FCT',
+        fileOptions: [
+          {
+            layerCount: 3,
+            id: 1,
+            name: 'Switch-in from OFI',
+            transactionType: 'Switch-in from OFI',
+          },
+          {
+            layerCount: 3,
+            id: 2,
+            name: 'Res to HLP',
+            borrowerOptions: [
+              {
+                layerCount: 4,
+                id: 1,
+                name: 'No Borrower Changes',
+                ifBorrowerChange: false,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
                     name: 'Existing MTG is moving as is into a HLP',
                     transactionType: 'TCO',
                   },
@@ -160,7 +340,210 @@ const layerTree: System[] = [
                     id: 2,
                     name: 'HLP MTG seg has a new term',
                     transactionType: 'Refinance',
-                    hint: '/nIf the homeline Mtg seg has new funds, then it must have a new term',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            layerCount: 3,
+            id: 3,
+            name: 'HLP to HLP',
+            borrowerOptions: [
+              {
+                layerCount: 4,
+                id: 1,
+                name: 'No Borrower Changes',
+                ifBorrowerChange: false,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'No New Allocation',
+                    transactionType:
+                      'HLP Limit Increase with No New Allocation',
+                  },
+                  {
+                    id: 2,
+                    name: 'New RCL Only',
+                    transactionType: 'HLP Limit Increase with New RCL Only',
+                  },
+                  {
+                    id: 3,
+                    name: 'New Mortgage Seg',
+                    transactionType: 'HLP Limit Increase with New Mortgage Seg',
+                  },
+                ],
+              },
+              {
+                layerCount: 4,
+                id: 2,
+                name: 'Borrower Changes',
+                ifBorrowerChange: true,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'Existing MTG is moving as is into a HLP',
+                    transactionType: 'Add/Remove borrower',
+                  },
+                  {
+                    id: 2,
+                    name: 'HLP MTG seg has a new term',
+                    transactionType: 'Refinance',
+                  },
+                ],
+              },
+            ],
+          },
+          // FCT Port to Current Owned
+          {
+            layerCount: 3,
+            id: 6,
+            name: 'Port to Owned',
+            portTypes: [
+              {
+                layerCount: 4,
+                id: 1,
+                name: 'Port to current Owned Property has to be a Same-day port',
+                mortgageAmountAdjustment: [
+                  {
+                    layerCount: 5,
+                    id: 1,
+                    name: 'Straight',
+                    transactionType: 'Same-day Straight Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 2,
+                    name: 'Increase',
+                    transactionType: 'Same-day Increase Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 3,
+                    name: 'Decrease',
+                    transactionType: 'Same-day Decrease Port',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  // Residential Files
+
+  {
+    layerCount: 1,
+    id: 2,
+    name: 'Linx-Residential',
+    currentSystem: 'Linx',
+    homelineOrResidential: 'Residential',
+    registerParties: [
+      {
+        layerCount: 2,
+        id: 1,
+        name: 'Lawyer',
+        fileOptions: [
+          {
+            layerCount: 3,
+            id: 1,
+            name: 'Purchase',
+            transactionType: 'Purchase',
+          },
+          {
+            layerCount: 3,
+            id: 2,
+            name: 'Switch-in from OFI',
+            transactionType: 'Switch-in from OFI',
+          },
+          {
+            layerCount: 3,
+            id: 3,
+            name: 'Res to Res',
+            borrowerOptions: [
+              {
+                layerCount: 4,
+                id: 1,
+                name: 'No Borrower Changes',
+                ifBorrowerChange: false,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'New MTG has new funds & remaining term',
+                    transactionType: 'Refinance Add-on',
+                  },
+                  {
+                    id: 2,
+                    name: 'New MTG has new funds & new term',
+                    transactionType: 'Refinance',
+                  },
+                ],
+              },
+              {
+                layerCount: 4,
+                id: 2,
+                name: 'Borrower Changes',
+                ifBorrowerChange: true,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'Existing MTG is moving as is',
+                    transactionType: 'Add/Remove borrower',
+                  },
+                  {
+                    id: 2,
+                    name: 'New MTG has new funds & remaining term',
+                    transactionType: 'Refinance Add-on',
+                  },
+                  {
+                    id: 3,
+                    name: 'New MTG has new funds & new term',
+                    transactionType: 'Refinance',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            layerCount: 3,
+            id: 4,
+            name: 'HLP to Res',
+            borrowerOptions: [
+              {
+                layerCount: 4,
+                id: 1,
+                name: 'No Borrower Changes',
+                ifBorrowerChange: false,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'New MTG has new funds & remaining term',
+                    transactionType: 'Refinance Add-on',
+                  },
+                  {
+                    id: 2,
+                    name: 'New MTG has new funds & new term',
+                    transactionType: 'Refinance',
+                  },
+                ],
+              },
+              {
+                layerCount: 4,
+                id: 2,
+                name: 'Borrower Changes',
+                ifBorrowerChange: true,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'New MTG has new funds & remaining term',
+                    transactionType: 'Refinance Add-on',
+                  },
+                  {
+                    id: 2,
+                    name: 'New MTG has new funds & new term',
+                    transactionType: 'Refinance',
                   },
                 ],
               },
@@ -248,18 +631,178 @@ const layerTree: System[] = [
               },
             ],
           },
+          {
+            layerCount: 3,
+            id: 6,
+            name: 'Port to Owned',
+            portTypes: [
+              {
+                layerCount: 4,
+                id: 1,
+                name: 'Port to current Owned Property has to be a Same-day port',
+                mortgageAmountAdjustment: [
+                  {
+                    layerCount: 5,
+                    id: 1,
+                    name: 'Straight',
+                    transactionType: 'Same-day Straight Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 2,
+                    name: 'Increase',
+                    transactionType: 'Same-day Increase Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 3,
+                    name: 'Decrease',
+                    transactionType: 'Same-day Decrease Port',
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
-      { layerCount: 2, id: 2, name: 'FCT', fileOptions: [] },
+      {
+        layerCount: 2,
+        id: 2,
+        name: 'FCT',
+        fileOptions: [
+          {
+            layerCount: 3,
+            id: 1,
+            name: 'Switch-in from OFI',
+            transactionType: 'Switch-in from OFI',
+          },
+          {
+            layerCount: 3,
+            id: 3,
+            name: 'Res to Res',
+            borrowerOptions: [
+              {
+                layerCount: 4,
+                id: 1,
+                name: 'No Borrower Changes',
+                ifBorrowerChange: false,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'New MTG has new funds & remaining term',
+                    transactionType: 'Refinance Add-on',
+                  },
+                  {
+                    id: 2,
+                    name: 'New MTG has new funds & new term',
+                    transactionType: 'Refinance',
+                  },
+                ],
+              },
+              {
+                layerCount: 4,
+                id: 2,
+                name: 'Borrower Changes',
+                ifBorrowerChange: true,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'Existing MTG is moving as is',
+                    transactionType: 'Add/Remove borrower',
+                  },
+                  {
+                    id: 2,
+                    name: 'New MTG has new funds & remaining term',
+                    transactionType: 'Refinance Add-on',
+                  },
+                  {
+                    id: 3,
+                    name: 'New MTG has new funds & new term',
+                    transactionType: 'Refinance',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            layerCount: 3,
+            id: 4,
+            name: 'HLP to Res',
+            borrowerOptions: [
+              {
+                layerCount: 4,
+                id: 1,
+                name: 'No Borrower Changes',
+                ifBorrowerChange: false,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'New MTG has new funds & remaining term',
+                    transactionType: 'Refinance Add-on',
+                  },
+                  {
+                    id: 2,
+                    name: 'New MTG has new funds & new term',
+                    transactionType: 'Refinance',
+                  },
+                ],
+              },
+              {
+                layerCount: 4,
+                id: 2,
+                name: 'Borrower Changes',
+                ifBorrowerChange: true,
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'New MTG has new funds & remaining term',
+                    transactionType: 'Refinance Add-on',
+                  },
+                  {
+                    id: 2,
+                    name: 'New MTG has new funds & new term',
+                    transactionType: 'Refinance',
+                  },
+                ],
+              },
+            ],
+          },
+          // FCT Port to Current Owned
+          {
+            layerCount: 3,
+            id: 6,
+            name: 'Port to Owned',
+            portTypes: [
+              {
+                layerCount: 4,
+                id: 1,
+                name: 'Port to current Owned Property has to be a Same-day port',
+                mortgageAmountAdjustment: [
+                  {
+                    layerCount: 5,
+                    id: 1,
+                    name: 'Straight',
+                    transactionType: 'Same-day Straight Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 2,
+                    name: 'Increase',
+                    transactionType: 'Same-day Increase Port',
+                  },
+                  {
+                    layerCount: 5,
+                    id: 3,
+                    name: 'Decrease',
+                    transactionType: 'Same-day Decrease Port',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
     ],
-  },
-  {
-    layerCount: 1,
-    id: 2,
-    name: 'Linx-Residential',
-    currentSystem: 'Linx',
-    homelineOrResidential: 'Residential',
-    registerParties: [],
   },
   {
     layerCount: 1,

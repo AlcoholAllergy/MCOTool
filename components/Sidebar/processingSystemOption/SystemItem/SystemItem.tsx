@@ -10,6 +10,7 @@ import {
   setLayerCount,
   setRegisterPartiesList,
   setFinalType,
+  setFileStatus,
 } from '@/redux/userSelection/userSelectionSlice';
 
 interface SystemItemProps {
@@ -49,6 +50,7 @@ const SystemItem = ({
     dispatch(setLayerCount(layerCount));
     dispatch(setHomelineOrResidential(homelineOrResidential));
     dispatch(setFinalType(''));
+    dispatch(setFileStatus(''));
   };
 
   // for css

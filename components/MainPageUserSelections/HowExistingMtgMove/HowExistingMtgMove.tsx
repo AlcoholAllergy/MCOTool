@@ -5,10 +5,13 @@ import { RootState, AppDispatch } from '@/redux/store';
 import {
   setFinalType,
   setHowExistingMtgMove,
+  setIsPort,
+  setMortgageAmountAdjustmentList,
+  setFileStatus,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const HowExistingMtgMove = () => {
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
 
   const { howExistingMtgMoveList, howExistingMtgMove } = useSelector(
     (state: RootState) => state.userSelect,
@@ -17,21 +20,22 @@ const HowExistingMtgMove = () => {
   //handle all the envents once user click the bottom
   const onClickHandler = (option: any) => {
     return (e: MouseEvent) => {
-      dispach(setHowExistingMtgMove(option.name));
-      dispach(setFinalType(option.transactionType));
+      dispatch(setHowExistingMtgMove(option.name));
+      dispatch(setFinalType(option.transactionType));
+      dispatch(setIsPort(false));
+      dispatch(setMortgageAmountAdjustmentList([]));
+      dispatch(setFileStatus(''));
     };
   };
 
   return (
-    <div className="flex justify-start items-center mt-[-50px]">
+    <div className="tabs mt-[-50px] min-h-[50px]">
       {howExistingMtgMoveList.map((option) => {
         const selected = option.name === howExistingMtgMove;
         return (
           <p
-            className={`truncate select-none m-0 py-2 px-4  text-white bg-gray-900 cursor-pointer duration-300 text-xl ${
-              selected
-                ? 'bg-gray-400  scale-95  '
-                : 'bg-gray-900 hover:bg-gray-400 hover:scale-90'
+            className={`tab tab-lifted tab-lg font-semibold text-gray-300 hover:scale-105 hover:bg-slate-400 ${
+              selected ? 'tab-active bg-secondary text-gray-600' : null
             }`}
             key={option.id}
             onClick={onClickHandler(option)}
