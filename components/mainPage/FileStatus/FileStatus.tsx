@@ -4,7 +4,10 @@ import { MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '@/redux/store';
 
-import { setFileStatus } from '@/redux/userSelection/userSelectionSlice';
+import {
+  setFileStatus,
+  setNotes,
+} from '@/redux/userSelection/userSelectionSlice';
 
 type FileStatustype = {
   id: number;
@@ -20,16 +23,15 @@ const fileStatysTypeList: FileStatustype[] = [
 const FileStatus = () => {
   const dispatch = useDispatch();
 
-  const { fileStatus } = useSelector((state: RootState) => state.userSelect);
-
-  useEffect(() => {
-    return () => {};
-  }, []);
+  const { fileStatus, notes } = useSelector(
+    (state: RootState) => state.userSelect,
+  );
 
   //handle all the envents once user click the bottom
   const onClickHandler = (state: any) => {
     return (e: MouseEvent) => {
       dispatch(setFileStatus(state.name));
+      dispatch(setNotes(!notes.dummyState));
     };
   };
 
@@ -39,7 +41,7 @@ const FileStatus = () => {
         const selected = state.name === fileStatus;
         return (
           <a
-            className={`tab tab-lifted tab-lg font-semibold text-gray-300 hover:scale-105 ${
+            className={`tab tab-lifted tab-md font-semibold text-gray-300 hover:scale-105 ${
               selected ? 'tab-active bg-secondary text-gray-600' : null
             }`}
             key={state.id}

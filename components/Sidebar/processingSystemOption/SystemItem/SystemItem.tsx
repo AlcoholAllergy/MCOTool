@@ -11,6 +11,10 @@ import {
   setRegisterPartiesList,
   setFinalType,
   setFileStatus,
+  setCurrentRegisterParty,
+  setPurchaseType,
+  setPurchaseTypeList,
+  setPromptsList,
 } from '@/redux/userSelection/userSelectionSlice';
 
 interface SystemItemProps {
@@ -51,6 +55,10 @@ const SystemItem = ({
     dispatch(setHomelineOrResidential(homelineOrResidential));
     dispatch(setFinalType(''));
     dispatch(setFileStatus(''));
+    dispatch(setCurrentRegisterParty(''));
+    dispatch(setPurchaseType(''));
+    dispatch(setPurchaseTypeList([]));
+    dispatch(setPromptsList([]));
   };
 
   // for css

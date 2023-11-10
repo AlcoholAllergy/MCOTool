@@ -3,39 +3,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '@/redux/store';
 
 import {
+  setWithinOrNewReg,
   setFinalType,
-  setHowExistingMtgMove,
-  setIsPort,
-  setMortgageAmountAdjustmentList,
   setFileStatus,
+  setHowExistingMtgMoveList,
+  setHowExistingMtgMove,
   setPromptsList,
 } from '@/redux/userSelection/userSelectionSlice';
 
-const HowExistingMtgMove = () => {
+const WithinOrNewReg = () => {
   const dispatch = useDispatch();
 
-  const { howExistingMtgMoveList, howExistingMtgMove } = useSelector(
+  const { withinOrNewReg, withinOrNewRegList } = useSelector(
     (state: RootState) => state.userSelect,
   );
 
-  //handle all the envents once user click the bottom
+  //handle all the events once user click the bottom
   const onClickHandler = (option: any) => {
     return (e: MouseEvent) => {
-      dispatch(setHowExistingMtgMove(option.name));
-      dispatch(setFinalType(option.transactionType));
-      dispatch(setIsPort(false));
-      dispatch(setMortgageAmountAdjustmentList([]));
+      dispatch(setWithinOrNewReg(option.name));
+      dispatch(setHowExistingMtgMoveList(option.howExistingMtgMove));
+      dispatch(setHowExistingMtgMove(''));
+      dispatch(setFinalType(''));
       dispatch(setFileStatus(''));
-      if (option.hasOwnProperty('prompts')) {
-        dispatch(setPromptsList(option.prompts));
-      }
+      dispatch(setPromptsList([]));
     };
   };
 
   return (
     <div className="tabs mt-[-50px] min-h-[50px]">
-      {howExistingMtgMoveList.map((option) => {
-        const selected = option.name === howExistingMtgMove;
+      {withinOrNewRegList.map((option) => {
+        const selected = option.name === withinOrNewReg;
         return (
           <p
             className={`tab tab-lifted tab-md font-semibold text-gray-300 hover:scale-105 hover:bg-slate-400 ${
@@ -53,4 +51,4 @@ const HowExistingMtgMove = () => {
   );
 };
 
-export default HowExistingMtgMove;
+export default WithinOrNewReg;

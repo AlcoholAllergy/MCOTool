@@ -12,6 +12,11 @@ import {
   setMortgageAmountAdjustmentList,
   setHowExistingMtgMoveList,
   setFileStatus,
+  setWithinOrNewRegList,
+  setBorrowerOption,
+  setPurchaseTypeList,
+  setPurchaseType,
+  setPromptsList,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const FileOption = () => {
@@ -33,7 +38,20 @@ const FileOption = () => {
         dispatch(setHowExistingMtgMoveList([]));
         dispatch(setMortgageAmountAdjustmentList([]));
         dispatch(setFileStatus(''));
+        dispatch(setPurchaseTypeList([]));
+        dispatch(setPurchaseType(''));
+        dispatch(setPromptsList([]));
+        return;
+      } else if (option.hasOwnProperty('purchaseTypes')) {
+        dispatch(setFileStatus(''));
+        dispatch(setIsPort(false));
 
+        dispatch(setBorrowerChangeList([]));
+        dispatch(setHowExistingMtgMoveList([]));
+        dispatch(setMortgageAmountAdjustmentList([]));
+        dispatch(setPurchaseTypeList(option.purchaseTypes));
+        dispatch(setPurchaseType(''));
+        dispatch(setPromptsList([]));
         return;
       } else if (option.hasOwnProperty('portTypes')) {
         dispatch(setIsPort(true));
@@ -49,6 +67,11 @@ const FileOption = () => {
         dispatch(setFileStatus(''));
       }
       dispatch(setFinalType(''));
+      dispatch(setWithinOrNewRegList([]));
+      dispatch(setBorrowerOption(''));
+      dispatch(setPurchaseTypeList([]));
+      dispatch(setPurchaseType(''));
+      dispatch(setPromptsList([]));
     };
   };
 

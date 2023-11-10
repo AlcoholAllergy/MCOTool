@@ -8,7 +8,7 @@ import { BiSolidCopy } from 'react-icons/bi';
 
 const Condition = () => {
   const [text, setText] = useState<string>('');
-  const { finalType, homelineOrResidential } = useSelector(
+  const { finalType, homelineOrResidential, notes } = useSelector(
     (state: RootState) => state.userSelect,
   );
 
@@ -23,8 +23,7 @@ const Condition = () => {
   useEffect(() => {
     const condition = getConditions(homelineOrResidential, finalType);
     setText(condition);
-    console.log(condition);
-  }, [finalType]);
+  }, [finalType, homelineOrResidential]);
 
   return (
     <div className="form-control w-full">
@@ -33,7 +32,7 @@ const Condition = () => {
       </label>
       <div className="relative w-full">
         <textarea
-          className="textarea  text-cyan-800 h-52 w-full" // Full width for responsiveness
+          className="textarea  text-cyan-800 h-32 w-full" // Full width for responsiveness
           value={text}
           onChange={onchangeHadler}
         ></textarea>

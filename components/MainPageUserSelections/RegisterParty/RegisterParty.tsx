@@ -11,6 +11,9 @@ import {
   setFinalType,
   setFileOption,
   setFileStatus,
+  setPurchaseTypeList,
+  setPurchaseType,
+  setPromptsList,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const RegisterParty = () => {
@@ -39,6 +42,9 @@ const RegisterParty = () => {
       dispatch(setFinalType(''));
       dispatch(setFileOption(''));
       dispatch(setFileStatus(''));
+      dispatch(setPurchaseTypeList([]));
+      dispatch(setPurchaseType(''));
+      dispatch(setPromptsList([]));
     };
   };
 
@@ -48,7 +54,7 @@ const RegisterParty = () => {
         const selected = party.name === selectedRegisterParty;
         return (
           <a
-            className={`tab tab-lifted tab-lg font-semibold text-gray-300 hover:scale-105 hover:bg-slate-400 ${
+            className={`tab tab-lifted tab-md font-semibold text-gray-300 hover:scale-105 hover:bg-slate-400 ${
               selected ? 'tab-active bg-secondary text-gray-600' : null
             }`}
             key={party.id}

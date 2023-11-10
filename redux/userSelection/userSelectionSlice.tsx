@@ -1,6 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { RegisterPartyType, FinalType } from '@/types/generalTypes';
+import {
+  RegisterPartyTypes,
+  FinalTypes,
+  FileStatusTypes,
+  WithinOrNewReg,
+  HowExistingMtgMove,
+  PurchaseTypeNames,
+  PurchaseType,
+} from '@/types/generalTypes';
 
 export interface UserSelectionState {
   currentSelectedSystem:
@@ -10,17 +18,28 @@ export interface UserSelectionState {
     | 'Casper-Residential'
     | '';
   selectedSystem: 'Linx' | 'Casper' | '';
-  selectedRegisterParty: RegisterPartyType;
+  selectedRegisterParty: RegisterPartyTypes;
   homelineOrResidential: 'Homeline' | 'Residential' | '';
   layerCount: number;
   ifBorrowerChange: boolean;
+  borrowerOption: 'No Borrower Changes' | 'Borrower Changes' | '';
   rclOnly: boolean;
-  finalType: FinalType;
+
+  purchaseType: PurchaseTypeNames;
+  purchaseTypeList: PurchaseType[];
+
+  finalType: FinalTypes;
   isNewHomelineACRequired: boolean;
+
+  havePrompt: boolean;
+  promptsList: any[];
 
   fileOption: string;
   howExistingMtgMove: string;
-  howExistingMtgMoveList: any[];
+  howExistingMtgMoveList: HowExistingMtgMove[];
+
+  withinOrNewReg: 'Within' | 'New Reg' | '';
+  withinOrNewRegList: WithinOrNewReg[];
 
   port: {
     isPort: boolean;
@@ -30,7 +49,7 @@ export interface UserSelectionState {
     mortgageAmountAdjustmentList: any[];
   };
 
-  fileStatus: 'In Order' | 'OOO Review Complete' | 'OOO Review Incomplete' | '';
+  fileStatus: FileStatusTypes;
 
   showConditionTextBox: boolean;
   showFundingNotesTextBox: boolean;
@@ -38,7 +57,10 @@ export interface UserSelectionState {
   fileOptionList: any[];
   registerPartiesList: any[];
   borrowerChangeList: any[];
-  promptsList: any[];
+
+  notes: {
+    dummyState: boolean;
+  };
 }
 
 const initialState: UserSelectionState = {
@@ -50,9 +72,18 @@ const initialState: UserSelectionState = {
   fileOption: '',
   rclOnly: false,
   ifBorrowerChange: false,
+  borrowerOption: '',
+
+  purchaseType: '',
+  purchaseTypeList: [],
+
   finalType: '',
   howExistingMtgMove: '',
   howExistingMtgMoveList: [],
+
+  withinOrNewReg: '',
+  withinOrNewRegList: [],
+
   port: {
     isPort: false,
     portType: '',
@@ -60,6 +91,9 @@ const initialState: UserSelectionState = {
     adjustment: '',
     mortgageAmountAdjustmentList: [],
   },
+
+  havePrompt: false,
+  promptsList: [],
 
   fileStatus: '',
   isNewHomelineACRequired: false,
@@ -69,7 +103,10 @@ const initialState: UserSelectionState = {
   fileOptionList: [],
   registerPartiesList: [],
   borrowerChangeList: [],
-  promptsList: [],
+
+  notes: {
+    dummyState: false,
+  },
 };
 
 const UserSelectionSlice = createSlice({
@@ -96,6 +133,9 @@ const UserSelectionSlice = createSlice({
     },
     setIfBorrowerChange: (state, action) => {
       state.ifBorrowerChange = action.payload;
+    },
+    setBorrowerOption: (state, action) => {
+      state.borrowerOption = action.payload;
     },
     setFinalType: (state, action) => {
       state.finalType = action.payload;
@@ -130,6 +170,12 @@ const UserSelectionSlice = createSlice({
     setBorrowerChangeList: (state, action) => {
       state.borrowerChangeList = action.payload;
     },
+    setWithinOrNewReg: (state, action) => {
+      state.withinOrNewReg = action.payload;
+    },
+    setWithinOrNewRegList: (state, action) => {
+      state.withinOrNewRegList = action.payload;
+    },
     setHowExistingMtgMove: (state, action) => {
       state.howExistingMtgMove = action.payload;
     },
@@ -145,17 +191,34 @@ const UserSelectionSlice = createSlice({
     setFileStatus: (state, action) => {
       state.fileStatus = action.payload;
     },
+    resetUserSelectionState: (state) => {
+      return { ...initialState };
+    },
+    setNotes: (state, action) => {
+      state.notes.dummyState = action.payload;
+    },
+
+    //Prompts
+    setHavePrompt: (state, action) => {
+      state.havePrompt = action.payload;
+    },
     setPromptsList: (state, action) => {
       state.promptsList = action.payload;
     },
-    resetUserSelectionState: (state) => {
-      return { ...initialState };
+
+    setPurchaseType: (state, action) => {
+      state.purchaseType = action.payload;
+    },
+    setPurchaseTypeList: (state, action) => {
+      state.purchaseTypeList = action.payload;
     },
   },
 });
 
 export const {
   setLayerCount,
+  setPurchaseType,
+  setPurchaseTypeList,
   setCurrentSelectedSystem,
   setSelectedSystem,
   setHomelineOrResidential,
@@ -167,18 +230,23 @@ export const {
   setRclOnly,
   setAdjustment,
   setIfBorrowerChange,
+  setBorrowerOption,
   setShowConditionTextBox,
   setShowFundingNotesTextBox,
   setShowNotePadTextBox,
   setFileOptionList,
   setRegisterPartiesList,
   setBorrowerChangeList,
+  setWithinOrNewReg,
+  setWithinOrNewRegList,
   setPortTypesList,
   setMortgageAmountAdjustmentList,
   setHowExistingMtgMove,
   setHowExistingMtgMoveList,
   setFileStatus,
   resetUserSelectionState,
+  setNotes,
+  setHavePrompt,
   setPromptsList,
 } = UserSelectionSlice.actions;
 

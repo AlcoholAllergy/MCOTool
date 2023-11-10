@@ -6,9 +6,11 @@ import FileOption from '../MainPageUserSelections/FileOption/FileOption';
 import BorrowerOption from '../MainPageUserSelections/BorrowerOption/BorrowerOption';
 import Port from '../MainPageUserSelections/Port/Port';
 import MortgageAmountAdjustment from '../MainPageUserSelections/Port/MortgageAmountAdjustment';
+import WithinOrNewReg from '../MainPageUserSelections/WithinOrNewReg/WithinOrNewReg';
 import HowExistingMtgMove from '../MainPageUserSelections/HowExistingMtgMove/HowExistingMtgMove';
 import Prompt from '../mainPage/Prompt/Prompt';
 import NoteArea from '../mainPage/NoteArea/NoteArea';
+import PurchaseTypes from '../MainPageUserSelections/PurchaseTypes/PurchaseTypes';
 
 import FileStatus from './FileStatus/FileStatus';
 
@@ -19,6 +21,10 @@ const MainPage = () => {
     borrowerChangeList,
     port,
     howExistingMtgMoveList,
+    withinOrNewRegList,
+    havePrompt,
+    purchaseTypeList,
+    promptsList,
   } = useAppSelector((state: RootState) => state.userSelect);
 
   return (
@@ -27,6 +33,7 @@ const MainPage = () => {
         {/* to do: create components to match layers */}
         {layerCount >= 1 && <RegisterParty />}
         {layerCount >= 2 && <FileOption />}
+        {purchaseTypeList.length != 0 && <PurchaseTypes />}
         {layerCount >= 3 && borrowerChangeList.length != 0 && (
           <BorrowerOption />
         )}
@@ -34,13 +41,14 @@ const MainPage = () => {
         {layerCount >= 4 && port.mortgageAmountAdjustmentList.length != 0 && (
           <MortgageAmountAdjustment />
         )}
+        {withinOrNewRegList.length != 0 && <WithinOrNewReg />}
         {layerCount >= 4 && howExistingMtgMoveList.length != 0 && (
           <HowExistingMtgMove />
         )}
         {finalType && <FileStatus />}
       </div>
       <div className="flex-grow mb-10 mt-10">
-        <Prompt />
+        {promptsList.length != 0 && <Prompt />}
       </div>
       <div className="relative bottom-8 lg:w-6/7">
         <NoteArea />

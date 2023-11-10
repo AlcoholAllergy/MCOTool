@@ -18,7 +18,7 @@ const NotePad = () => {
       </label>
       <div className="relative w-full">
         <textarea
-          className="textarea  text-cyan-800 h-52 w-full" // Full width for responsiveness
+          className="textarea  text-cyan-800 h-28 w-full" // Full width for responsiveness
           value={text}
           onChange={onchangeHadler}
         ></textarea>

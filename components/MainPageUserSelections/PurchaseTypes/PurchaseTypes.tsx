@@ -4,38 +4,30 @@ import { RootState, AppDispatch } from '@/redux/store';
 
 import {
   setFinalType,
-  setHowExistingMtgMove,
-  setIsPort,
-  setMortgageAmountAdjustmentList,
-  setFileStatus,
   setPromptsList,
+  setPurchaseType,
 } from '@/redux/userSelection/userSelectionSlice';
 
-const HowExistingMtgMove = () => {
+const PurchaseTypes = () => {
   const dispatch = useDispatch();
 
-  const { howExistingMtgMoveList, howExistingMtgMove } = useSelector(
+  const { purchaseType, purchaseTypeList } = useSelector(
     (state: RootState) => state.userSelect,
   );
 
   //handle all the envents once user click the bottom
   const onClickHandler = (option: any) => {
     return (e: MouseEvent) => {
-      dispatch(setHowExistingMtgMove(option.name));
+      dispatch(setPurchaseType(option.name));
       dispatch(setFinalType(option.transactionType));
-      dispatch(setIsPort(false));
-      dispatch(setMortgageAmountAdjustmentList([]));
-      dispatch(setFileStatus(''));
-      if (option.hasOwnProperty('prompts')) {
-        dispatch(setPromptsList(option.prompts));
-      }
+      dispatch(setPromptsList([]));
     };
   };
 
   return (
     <div className="tabs mt-[-50px] min-h-[50px]">
-      {howExistingMtgMoveList.map((option) => {
-        const selected = option.name === howExistingMtgMove;
+      {purchaseTypeList.map((option) => {
+        const selected = option.name === purchaseType;
         return (
           <p
             className={`tab tab-lifted tab-md font-semibold text-gray-300 hover:scale-105 hover:bg-slate-400 ${
@@ -53,4 +45,4 @@ const HowExistingMtgMove = () => {
   );
 };
 
-export default HowExistingMtgMove;
+export default PurchaseTypes;

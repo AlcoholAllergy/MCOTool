@@ -21,23 +21,23 @@ const InputComponent: React.FC<InputComponentProps> = ({
   ...props
 }) => {
   const Component = as === 'input' ? 'input' : 'textarea';
-  const [emploeeId, setEmploeeId] = useState('');
+  const [employeeId, setEmployeeId] = useState('');
 
   const onChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    setEmploeeId(e.target.value);
+    setEmployeeId(e.target.value);
   };
 
   const onclickHandler = () => {
-    navigator.clipboard.writeText(emploeeId);
+    navigator.clipboard.writeText(employeeId);
   };
 
   return (
     <div className="flex items-center">
       {React.createElement(Component, {
         className: `input-default-styles ${className}`,
-        value: emploeeId,
+        value: employeeId,
         onChange: onChangeHandler,
         style: style,
         ...props,

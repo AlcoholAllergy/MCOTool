@@ -7,6 +7,7 @@ import {
   setAdjustment,
   setFinalType,
   setFileStatus,
+  setPromptsList,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const MortgageAmountAdjustment = () => {
@@ -22,6 +23,7 @@ const MortgageAmountAdjustment = () => {
       dispatch(setAdjustment(option.name));
       dispatch(setFinalType(option.transactionType));
       dispatch(setFileStatus(''));
+      dispatch(setPromptsList([]));
     };
   };
 
@@ -31,7 +33,7 @@ const MortgageAmountAdjustment = () => {
         const selected = option.name === adjustment;
         return (
           <p
-            className={`tab tab-lifted tab-lg font-semibold text-gray-300 hover:scale-105  hover:bg-slate-400 ${
+            className={`tab tab-lifted tab-md font-semibold text-gray-300 hover:scale-105  hover:bg-slate-400 ${
               selected ? 'tab-active bg-secondary text-gray-600' : null
             }`}
             key={option.id}
@@ -39,7 +41,6 @@ const MortgageAmountAdjustment = () => {
           >
             {option.name}
           </p>
-          //   to add orderStatus component if have a finalType value
         );
       })}
     </div>

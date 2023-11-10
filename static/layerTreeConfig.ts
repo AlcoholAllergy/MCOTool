@@ -1,62 +1,8 @@
-type System = {
-  layerCount: 1;
-  id: number;
-  name: string;
-  currentSystem: 'Linx' | 'Casper';
-  homelineOrResidential: string;
-  registerParties: RegisterParty[];
-};
-
-type RegisterParty = {
-  layerCount: 2;
-  id: number;
-  name: string;
-  fileOptions: FileOption[];
-};
-
-type FileOption = {
-  layerCount: 3;
-  id: number;
-  name: string;
-  transactionType?: string;
-  borrowerOptions?: BorrowerOption[];
-  portTypes?: PortType[];
-};
-
-type PortType = {
-  layerCount: 4;
-  id: number;
-  name:
-    | 'Same-day'
-    | 'Purchase Prior to sale'
-    | 'Sale prior to purcase'
-    | 'Port to current Owned Property has to be a Same-day port';
-  mortgageAmountAdjustment: AmountAdjustmentType[];
-};
-
-type AmountAdjustmentType = {
-  layerCount: 5;
-  id: number;
-  name: 'Straight' | 'Increase' | 'Decrease';
-  transactionType: string;
-};
-
-type BorrowerOption = {
-  layerCount: 4;
-  id: number;
-  name: string;
-  ifBorrowerChange: boolean;
-  howExistingMtgMove?: HowExistingMtgMove[];
-};
-
-type HowExistingMtgMove = {
-  id: number;
-  name: string;
-  transactionType: string;
-  hint?: string;
-};
+import { System } from '@/types/generalTypes';
+import PROMPTS from '@/static/promptsNotes';
 
 const layerTree: System[] = [
+  //Linx-Homeline
   {
     layerCount: 1,
     id: 1,
@@ -64,6 +10,7 @@ const layerTree: System[] = [
     currentSystem: 'Linx',
     homelineOrResidential: 'Homeline',
     registerParties: [
+      //Lawyer Homeline
       {
         layerCount: 2,
         id: 1,
@@ -73,7 +20,19 @@ const layerTree: System[] = [
             layerCount: 3,
             id: 1,
             name: 'Purchase',
-            transactionType: 'Purchase',
+            purchaseTypes: [
+              {
+                id: 1,
+                name: 'Regular Purchase',
+                transactionType: 'Regular Purchase',
+              },
+              { id: 2, name: 'FTHBI', transactionType: 'FTHBI' },
+              {
+                id: 3,
+                name: 'Purchase Plus',
+                transactionType: 'Purchase Plus',
+              },
+            ],
           },
           {
             layerCount: 3,
@@ -96,11 +55,17 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'Existing MTG is moving as is into a HLP',
                     transactionType: 'TCO',
+                    prompts: [
+                      PROMPTS.Lawyer.DRAFT_PICKUP,
+                      PROMPTS.Lawyer.HLP01E,
+                      PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
+                    ],
                   },
                   {
                     id: 2,
                     name: 'HLP MTG seg has new funds, then it must have a new term',
                     transactionType: 'Refinance',
+                    prompts: [PROMPTS.Lawyer.DISB_LAWYER],
                   },
                 ],
               },
@@ -113,48 +78,102 @@ const layerTree: System[] = [
                   {
                     id: 1,
                     name: 'Existing MTG is moving as is into a HLP',
-                    transactionType: 'Add/Remove borrower',
+                    transactionType: 'Add/Remove borrower TCO',
+                    prompts: [
+                      PROMPTS.Lawyer.DRAFT_PICKUP,
+                      PROMPTS.Lawyer.HLP03,
+                      PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
+                    ],
                   },
                   {
                     id: 2,
                     name: 'HLP MTG seg has a new term',
                     transactionType: 'Refinance',
-                    hint: '/nIf the homeline Mtg seg has new funds, then it must have a new term',
+                    prompts: [PROMPTS.Lawyer.DISB_LAWYER],
                   },
                 ],
               },
             ],
           },
-          //unfinished - lawyer hlp-hlp
+          //lawyer hlp-hlp
           {
             layerCount: 3,
             id: 4,
             name: 'HLP to HLP',
             borrowerOptions: [
+              //HLP TO HLP - No Borrower Changes
               {
                 layerCount: 4,
                 id: 1,
                 name: 'No Borrower Changes',
                 ifBorrowerChange: false,
-                howExistingMtgMove: [
+                withinOrNewReg: [
                   {
                     id: 1,
-                    name: 'No New Allocation',
-                    transactionType:
-                      'HLP Limit Increase with No New Allocation',
+                    name: 'Within Existing Reg',
+                    howExistingMtgMove: [
+                      {
+                        id: 1,
+                        name: 'No New Allocation',
+                        transactionType:
+                          'Within Existing Reg-HLP Limit Increase with No New Allocation',
+                      },
+                      {
+                        id: 2,
+                        name: 'New RCL Only',
+                        transactionType:
+                          'Within Existing Reg-HLP Limit Increase with New RCL Only',
+                      },
+                      {
+                        id: 3,
+                        name: 'New Mortgage Seg',
+                        transactionType:
+                          'Within Existing Reg-HLP Limit Increase with New Mortgage Seg',
+                      },
+                    ],
                   },
                   {
                     id: 2,
-                    name: 'New RCL Only',
-                    transactionType: 'HLP Limit Increase with New RCL Only',
-                  },
-                  {
-                    id: 3,
-                    name: 'New Mortgage Seg',
-                    transactionType: 'HLP Limit Increase with New Mortgage Seg',
+                    name: 'New Registration',
+                    howExistingMtgMove: [
+                      {
+                        id: 1,
+                        name: 'No New Allocation',
+                        transactionType:
+                          'New Registration-HLP Limit Increase with No New Allocation',
+                        prompts: [
+                          PROMPTS.Lawyer.DRAFT_PICKUP,
+                          PROMPTS.Lawyer.HLP03,
+                          PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
+                        ],
+                      },
+                      {
+                        id: 2,
+                        name: 'New RCL Only',
+                        transactionType:
+                          'New Registration-HLP Limit Increase with New RCL Only',
+                        prompts: [
+                          PROMPTS.Lawyer.DRAFT_PICKUP,
+                          PROMPTS.Lawyer.HLP03,
+                          PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
+                        ],
+                      },
+                      {
+                        id: 3,
+                        name: 'New Mortgage Seg',
+                        transactionType:
+                          'New Registration-HLP Limit Increase with New Mortgage Seg',
+                        prompts: [
+                          PROMPTS.Lawyer.DRAFT_PICKUP,
+                          PROMPTS.Lawyer.HLP03,
+                          PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
+                        ],
+                      },
+                    ],
                   },
                 ],
               },
+              //HLP TO HLP - Borrower Changes
               {
                 layerCount: 4,
                 id: 2,
@@ -163,13 +182,22 @@ const layerTree: System[] = [
                 howExistingMtgMove: [
                   {
                     id: 1,
-                    name: 'Existing MTG is moving as is into a HLP',
+                    name: 'Existing HLP MTG segs moving as is',
                     transactionType: 'Add/Remove borrower',
+                    prompts: [
+                      PROMPTS.Lawyer.AC_REQUIRED,
+                      PROMPTS.Lawyer.HLP03,
+                      PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
+                    ],
                   },
                   {
                     id: 2,
-                    name: 'HLP MTG seg has a new term',
+                    name: 'Existing HLP MTG segs not moving as is',
                     transactionType: 'Refinance',
+                    prompts: [
+                      PROMPTS.Lawyer.AC_REQUIRED,
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                    ],
                   },
                 ],
               },
@@ -271,19 +299,19 @@ const layerTree: System[] = [
                     layerCount: 5,
                     id: 1,
                     name: 'Straight',
-                    transactionType: 'Same-day Straight Port',
+                    transactionType: 'Port to Owned Same-day Straight Port',
                   },
                   {
                     layerCount: 5,
                     id: 2,
                     name: 'Increase',
-                    transactionType: 'Same-day Increase Port',
+                    transactionType: 'Port to Owned Same-day Increase Port',
                   },
                   {
                     layerCount: 5,
                     id: 3,
                     name: 'Decrease',
-                    transactionType: 'Same-day Decrease Port',
+                    transactionType: 'Port to Owned Same-day Decrease Port',
                   },
                 ],
               },
@@ -291,6 +319,7 @@ const layerTree: System[] = [
           },
         ],
       },
+      //FCT Homeline
       {
         layerCount: 2,
         id: 2,
@@ -334,7 +363,7 @@ const layerTree: System[] = [
                   {
                     id: 1,
                     name: 'Existing MTG is moving as is into a HLP',
-                    transactionType: 'Add/Remove borrower',
+                    transactionType: 'Add/Remove borrower TCO',
                   },
                   {
                     id: 2,
@@ -382,12 +411,12 @@ const layerTree: System[] = [
                 howExistingMtgMove: [
                   {
                     id: 1,
-                    name: 'Existing MTG is moving as is into a HLP',
+                    name: 'Existing HLP MTG segs moving as is',
                     transactionType: 'Add/Remove borrower',
                   },
                   {
                     id: 2,
-                    name: 'HLP MTG seg has a new term',
+                    name: 'Existing HLP MTG segs not moving as is',
                     transactionType: 'Refinance',
                   },
                 ],
@@ -409,19 +438,19 @@ const layerTree: System[] = [
                     layerCount: 5,
                     id: 1,
                     name: 'Straight',
-                    transactionType: 'Same-day Straight Port',
+                    transactionType: 'Port to Owned Same-day Straight Port',
                   },
                   {
                     layerCount: 5,
                     id: 2,
                     name: 'Increase',
-                    transactionType: 'Same-day Increase Port',
+                    transactionType: 'Port to Owned Same-day Increase Port',
                   },
                   {
                     layerCount: 5,
                     id: 3,
                     name: 'Decrease',
-                    transactionType: 'Same-day Decrease Port',
+                    transactionType: 'Port to Owned Same-day Decrease Port',
                   },
                 ],
               },
@@ -431,9 +460,7 @@ const layerTree: System[] = [
       },
     ],
   },
-
-  // Residential Files
-
+  //Linx Residential
   {
     layerCount: 1,
     id: 2,
@@ -450,7 +477,19 @@ const layerTree: System[] = [
             layerCount: 3,
             id: 1,
             name: 'Purchase',
-            transactionType: 'Purchase',
+            purchaseTypes: [
+              {
+                id: 1,
+                name: 'Regular Purchase',
+                transactionType: 'Regular Purchase',
+              },
+              { id: 2, name: 'FTHBI', transactionType: 'FTHBI' },
+              {
+                id: 3,
+                name: 'Purchase Plus',
+                transactionType: 'Purchase Plus',
+              },
+            ],
           },
           {
             layerCount: 3,
@@ -473,6 +512,10 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'New MTG has new funds & remaining term',
                     transactionType: 'Refinance Add-on',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.NO_PENALTY,
+                    ],
                   },
                   {
                     id: 2,
@@ -491,16 +534,25 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'Existing MTG is moving as is',
                     transactionType: 'Add/Remove borrower',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
+                    ],
                   },
                   {
                     id: 2,
                     name: 'New MTG has new funds & remaining term',
                     transactionType: 'Refinance Add-on',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.NO_PENALTY,
+                    ],
                   },
                   {
                     id: 3,
                     name: 'New MTG has new funds & new term',
                     transactionType: 'Refinance',
+                    prompts: [PROMPTS.Lawyer.DISB_LAWYER],
                   },
                 ],
               },
@@ -665,6 +717,7 @@ const layerTree: System[] = [
           },
         ],
       },
+      //FCT
       {
         layerCount: 2,
         id: 2,
@@ -804,6 +857,7 @@ const layerTree: System[] = [
       },
     ],
   },
+  //Casper-Homeline
   {
     layerCount: 1,
     id: 3,
@@ -812,6 +866,7 @@ const layerTree: System[] = [
     homelineOrResidential: 'Homeline',
     registerParties: [],
   },
+  //Casper-Residential
   {
     layerCount: 1,
     id: 4,
