@@ -55,7 +55,7 @@ const CONDITIONS: ConditionNotes = {
       HOMELINEREGULAR,
   },
   Residential: {
-    Purchase: RESIDENTIALREGULAR,
+    'Regular Purchase': RESIDENTIALREGULAR,
     'Switch-in from OFI': RESIDENTIALREGULAR,
     Refinance: RESIDENTIALREGULAR,
     'Refinance Add-on': RESIDENTIALREGULAR,
