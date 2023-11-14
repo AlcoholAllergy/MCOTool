@@ -24,6 +24,7 @@ export interface UserSelectionState {
   ifBorrowerChange: boolean;
   borrowerOption: 'No Borrower Changes' | 'Borrower Changes' | '';
   rclOnly: boolean;
+  holdingCompany: boolean;
 
   purchaseType: PurchaseTypeNames;
   purchaseTypeList: PurchaseType[];
@@ -71,6 +72,7 @@ const initialState: UserSelectionState = {
   layerCount: 0,
   fileOption: '',
   rclOnly: false,
+  holdingCompany: false,
   ifBorrowerChange: false,
   borrowerOption: '',
 
@@ -142,6 +144,9 @@ const UserSelectionSlice = createSlice({
     },
     setRclOnly: (state, action) => {
       state.rclOnly = action.payload;
+    },
+    setHoldingCompany: (state, action) => {
+      state.holdingCompany = action.payload;
     },
     setIsPort: (state, action) => {
       state.port.isPort = action.payload;
@@ -248,6 +253,7 @@ export const {
   setNotes,
   setHavePrompt,
   setPromptsList,
+  setHoldingCompany,
 } = UserSelectionSlice.actions;
 
 export default UserSelectionSlice.reducer;

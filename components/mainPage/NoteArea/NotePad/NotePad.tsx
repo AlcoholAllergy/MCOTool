@@ -14,7 +14,7 @@ const NotePad = () => {
   return (
     <div className="form-control w-full">
       <label className="label">
-        <span className="label-text text-cyan-200">NotePad</span>
+        <span className="label-text text-cyan-200 select-none">NotePad</span>
       </label>
       <div className="relative w-full">
         <textarea

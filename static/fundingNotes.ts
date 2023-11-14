@@ -30,7 +30,7 @@ Attn: MIP: Add-On of ext mtg #
 Ext COF:
 (   ) Cash Back Transfer: $`;
 
-const HOLDING_COMPANY = `ATTN MIP: Holding Company
+export const HOLDING_COMPANY = `\n\nATTN MIP: Holding Company
 Upon Activation, please change SRF details
 Company Name:
 Company SRF:

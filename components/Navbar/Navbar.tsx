@@ -34,9 +34,9 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center col-start-2 col-end-13 h-24 bg-blue-600 text-black ">
       <QuickNotes />
-      <span className="ml-10 hidden sm:inline bg-blue-500 text-white p-2 rounded">
+      {/* <span className="ml-10 hidden sm:inline bg-blue-500 text-white p-2 rounded">
         {`${nextHoliday}`}
-      </span>
+      </span> */}
       {/* TODO: add a input box for user employee ID */}
       <InputComponent
         as="input"

@@ -2,6 +2,8 @@ import { MouseEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '@/redux/store';
 
+import getCSS from '../tabsCSS';
+
 import {
   setLayerCount,
   setAdjustment,
@@ -33,9 +35,7 @@ const MortgageAmountAdjustment = () => {
         const selected = option.name === adjustment;
         return (
           <p
-            className={`tab tab-lifted tab-md font-semibold text-gray-300 hover:scale-105  hover:bg-slate-400 ${
-              selected ? 'tab-active bg-secondary text-gray-600' : null
-            }`}
+            className={getCSS(selected)}
             key={option.id}
             onClick={onClickHandler(option)}
           >

@@ -45,7 +45,7 @@ const QuickNotes: React.FC = () => {
   };
 
   return (
-    <div className="dropdown dropdown-hover ml-6">
+    <div className="dropdown dropdown-hover ml-40">
       <label tabIndex={0} className="btn m-1">
         <GrNotes size="1.5rem" />
       </label>

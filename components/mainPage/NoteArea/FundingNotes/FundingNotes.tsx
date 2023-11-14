@@ -6,8 +6,10 @@ import { BiSolidCopy } from 'react-icons/bi';
 
 import { getFundingNotes } from '@/utils/findNotesTool';
 
+import { HOLDING_COMPANY } from '@/static/fundingNotes';
+
 const FundingNotes = () => {
-  const { selectedRegisterParty, finalType } = useSelector(
+  const { selectedRegisterParty, finalType, holdingCompany } = useSelector(
     (state: RootState) => state.userSelect,
   );
 
@@ -24,11 +26,15 @@ const FundingNotes = () => {
   useEffect(() => {
     if (selectedRegisterParty != '') {
       const fundingNotes = getFundingNotes(selectedRegisterParty, finalType);
+      if (holdingCompany) {
+        setText(fundingNotes + HOLDING_COMPANY);
+        return;
+      }
       setText(fundingNotes);
     }
 
     return () => {};
-  }, [finalType, selectedRegisterParty]);
+  }, [finalType, selectedRegisterParty, holdingCompany]);
 
   return (
     <div className="form-control w-full">
