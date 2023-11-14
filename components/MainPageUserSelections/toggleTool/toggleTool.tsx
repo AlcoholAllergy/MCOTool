@@ -27,7 +27,7 @@ const ToggleTool: React.FC<ToggleToolProps> = ({ label }) => {
   };
 
   return (
-    <div className="form-control ml-40">
+    <div className="form-control ml-10 hidden md:block">
       <label className="label cursor-pointer">
         <span className="label-text text-yellow-400">{label}</span>
         <input
