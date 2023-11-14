@@ -61,6 +61,7 @@ export interface UserSelectionState {
 
   notes: {
     dummyState: boolean;
+    notePadNotes: string;
   };
 }
 
@@ -108,6 +109,7 @@ const initialState: UserSelectionState = {
 
   notes: {
     dummyState: false,
+    notePadNotes: '',
   },
 };
 
@@ -202,6 +204,9 @@ const UserSelectionSlice = createSlice({
     setNotes: (state, action) => {
       state.notes.dummyState = action.payload;
     },
+    setNotePadNotes: (state, action) => {
+      state.notes.notePadNotes = action.payload;
+    },
 
     //Prompts
     setHavePrompt: (state, action) => {
@@ -251,6 +256,7 @@ export const {
   setFileStatus,
   resetUserSelectionState,
   setNotes,
+  setNotePadNotes,
   setHavePrompt,
   setPromptsList,
   setHoldingCompany,
