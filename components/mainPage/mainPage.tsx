@@ -22,7 +22,7 @@ const MainPage = () => {
     port,
     howExistingMtgMoveList,
     withinOrNewRegList,
-    havePrompt,
+    fileOptionList,
     purchaseTypeList,
     promptsList,
   } = useAppSelector((state: RootState) => state.userSelect);
@@ -32,7 +32,7 @@ const MainPage = () => {
       <div className="flex flex-col space-y-6">
         {/* to do: create components to match layers */}
         {layerCount >= 1 && <RegisterParty />}
-        {layerCount >= 2 && <FileOption />}
+        {layerCount >= 2 && fileOptionList.length != 0 && <FileOption />}
         {purchaseTypeList.length != 0 && <PurchaseTypes />}
         {layerCount >= 3 && borrowerChangeList.length != 0 && (
           <BorrowerOption />
@@ -42,9 +42,7 @@ const MainPage = () => {
           <MortgageAmountAdjustment />
         )}
         {withinOrNewRegList.length != 0 && <WithinOrNewReg />}
-        {layerCount >= 4 && howExistingMtgMoveList.length != 0 && (
-          <HowExistingMtgMove />
-        )}
+        {howExistingMtgMoveList.length != 0 && <HowExistingMtgMove />}
         {finalType && <FileStatus />}
       </div>
       <div className="flex-grow mb-10 mt-10">

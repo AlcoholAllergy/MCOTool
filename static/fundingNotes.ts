@@ -87,45 +87,45 @@ Attn MIP: Add/Remove Borrwer`,
 const HOMELINEINCREASE = {
   HLP_INC_NEWREG_NOALLOWCATION: `HLP limit increase – New Reg Limit
   
-  New HLP Limit $
-  RCL/Mortgage Allocation   (  )
-  Special instructions:`,
+New HLP Limit $
+RCL/Mortgage Allocation   (  )
+Special instructions:`,
 
   HLP_INC_NEWREG_RCLONLY: `HLP limit increase – New Reg Limit
   
-  New HLP Limit $
-  RCL/Mortgage Allocation   ( x )
-  Special instructions:`,
+New HLP Limit $
+RCL/Mortgage Allocation   ( x )
+Special instructions:`,
 
   HLP_INC_NEWREG_NEWMTG: `HLP limit increase – New Reg Limit
   
-  New HLP Limit $
-  RCL/Mortgage Allocation   ( x )
-  Special instructions:
+New HLP Limit $
+RCL/Mortgage Allocation   ( x )
+Special instructions:
   
-  Attn MIP: COB required for the new mtg`,
+Attn MIP: COB required for the new mtg`,
 
   HLP_INC_WITHIN_NOALLOWCATION: `HLP limit increase – Within Reg Limit
   
-  Existing Registration Amount $
-  New HLP Limit $
-  RCL/Mortgage Allocation    (  )
-  Special instructions:`,
+Existing Registration Amount $
+New HLP Limit $
+RCL/Mortgage Allocation    (  )
+Special instructions:`,
   HLP_INC_WITHIN_NEWRCLONLY: `HLP limit increase – Within Reg Limit
   
-  Existing Registration Amount $
-  New HLP Limit $
-  RCL/Mortgage Allocation    ( x )
-  Special instructions:`,
+Existing Registration Amount $
+New HLP Limit $
+RCL/Mortgage Allocation    ( x )
+Special instructions:`,
 
   HLP_INC_WITHIN_NEWMTG: `HLP limit increase – Within Reg Limit
   
-  Existing Registration Amount $
-  New HLP Limit $
-  RCL/Mortgage Allocation    ( x )
-  Special instructions:
-  
-  Attn MIP: COB required for the new mtg`,
+Existing Registration Amount $
+New HLP Limit $
+RCL/Mortgage Allocation    ( x )
+Special instructions:
+
+Attn MIP: COB required for the new mtg`,
 };
 
 const PORT = {
@@ -283,12 +283,6 @@ const FUNDINGNOTES: FundingNotes = {
       HOMELINEINCREASE.HLP_INC_NEWREG_RCLONLY,
     'New Registration-HLP Limit Increase with New Mortgage Seg':
       HOMELINEINCREASE.HLP_INC_NEWREG_NEWMTG,
-    'Within Existing Reg-HLP Limit Increase with No New Allocation':
-      HOMELINEINCREASE.HLP_INC_WITHIN_NOALLOWCATION,
-    'Within Existing Reg-HLP Limit Increase with New RCL Only':
-      HOMELINEINCREASE.HLP_INC_WITHIN_NEWRCLONLY,
-    'Within Existing Reg-HLP Limit Increase with New Mortgage Seg':
-      HOMELINEINCREASE.HLP_INC_WITHIN_NEWMTG,
     'Purchase Prior to sale Straight Port': PORT.PPS_STRAIGHT,
     'Purchase Prior to sale Increase Port': PORT.PPS_INCREASE,
     'Purchase Prior to sale Decrease Port': PORT.PPS_DECREASE,
@@ -315,12 +309,7 @@ const FUNDINGNOTES: FundingNotes = {
       HOMELINEINCREASE.HLP_INC_NEWREG_RCLONLY,
     'New Registration-HLP Limit Increase with New Mortgage Seg':
       HOMELINEINCREASE.HLP_INC_NEWREG_NEWMTG,
-    'Within Existing Reg-HLP Limit Increase with No New Allocation':
-      HOMELINEINCREASE.HLP_INC_WITHIN_NOALLOWCATION,
-    'Within Existing Reg-HLP Limit Increase with New RCL Only':
-      HOMELINEINCREASE.HLP_INC_WITHIN_NEWRCLONLY,
-    'Within Existing Reg-HLP Limit Increase with New Mortgage Seg':
-      HOMELINEINCREASE.HLP_INC_WITHIN_NEWMTG,
+
     'Same-day Straight Port': PORT.SAMEDAY_STRAIGHT,
     'Same-day Increase Port': PORT.SAMEDAY_INCREASE,
     'Same-day Decrease Port': PORT.SAMEDAY_DECREASE,
@@ -333,6 +322,14 @@ const FUNDINGNOTES: FundingNotes = {
     'Port to Owned Same-day Straight Port': PORT.PTW_STRAIGHT,
     'Port to Owned Same-day Increase Port': PORT.PTW_INCREASE,
     'Port to Owned Same-day Decrease Port': PORT.PTW_DECREASE,
+  },
+  Internal: {
+    'Within Existing Reg-HLP Limit Increase with No New Allocation':
+      HOMELINEINCREASE.HLP_INC_WITHIN_NOALLOWCATION,
+    'Within Existing Reg-HLP Limit Increase with New RCL Only':
+      HOMELINEINCREASE.HLP_INC_WITHIN_NEWRCLONLY,
+    'Within Existing Reg-HLP Limit Increase with New Mortgage Seg':
+      HOMELINEINCREASE.HLP_INC_WITHIN_NEWMTG,
   },
 };
 

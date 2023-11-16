@@ -12,14 +12,15 @@ import {
   setFileStatus,
   setWithinOrNewRegList,
   setBorrowerOption,
-  setWithinOrNewReg,
   setPromptsList,
+  setHowExistingMtgMove,
 } from '@/redux/userSelection/userSelectionSlice';
+import HowExistingMtgMove from '../HowExistingMtgMove/HowExistingMtgMove';
 
 const BorrowerOption = () => {
   const dispatch = useDispatch();
 
-  const { borrowerChangeList, ifBorrowerChange, borrowerOption } = useSelector(
+  const { borrowerChangeList, borrowerOption } = useSelector(
     (state: RootState) => state.userSelect,
   );
 
@@ -38,15 +39,11 @@ const BorrowerOption = () => {
       if (option.hasOwnProperty('howExistingMtgMove')) {
         dispatch(setHowExistingMtgMoveList(option.howExistingMtgMove));
         dispatch(setFinalType(''));
-
+        dispatch(setHowExistingMtgMove(''));
         return;
       }
       //when the file is a homeline increase
-      if (option.hasOwnProperty('withinOrNewReg')) {
-        dispatch(setWithinOrNewRegList(option.withinOrNewReg));
-        dispatch(setHowExistingMtgMoveList([]));
-        dispatch(setWithinOrNewReg(''));
-      }
+
       dispatch(setFinalType(''));
 
       dispatch(setFileStatus(''));

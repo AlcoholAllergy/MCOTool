@@ -40,8 +40,8 @@ const Navbar = () => {
       {/* TODO: add a input box for user employee ID */}
       <InputComponent
         as="input"
-        className="mr-8 border rounded-md border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200"
-        placeholder=" employee ID"
+        className="mr-8 border rounded-md border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 pl-1"
+        placeholder="employee ID"
       />
     </div>
   );

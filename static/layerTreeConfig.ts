@@ -43,6 +43,12 @@ const layerTree: System[] = [
           {
             layerCount: 3,
             id: 3,
+            name: 'No Transferred',
+            transactionType: 'Refinance',
+          },
+          {
+            layerCount: 3,
+            id: 4,
             name: 'Res to HLP',
             borrowerOptions: [
               {
@@ -98,7 +104,7 @@ const layerTree: System[] = [
           //lawyer hlp-hlp
           {
             layerCount: 3,
-            id: 4,
+            id: 5,
             name: 'HLP to HLP',
             borrowerOptions: [
               //HLP TO HLP - No Borrower Changes
@@ -107,68 +113,38 @@ const layerTree: System[] = [
                 id: 1,
                 name: 'No Borrower Changes',
                 ifBorrowerChange: false,
-                withinOrNewReg: [
+                howExistingMtgMove: [
                   {
                     id: 1,
-                    name: 'Within Existing Reg',
-                    howExistingMtgMove: [
-                      {
-                        id: 1,
-                        name: 'No New Allocation',
-                        transactionType:
-                          'Within Existing Reg-HLP Limit Increase with No New Allocation',
-                      },
-                      {
-                        id: 2,
-                        name: 'New RCL Only',
-                        transactionType:
-                          'Within Existing Reg-HLP Limit Increase with New RCL Only',
-                      },
-                      {
-                        id: 3,
-                        name: 'New Mortgage Seg',
-                        transactionType:
-                          'Within Existing Reg-HLP Limit Increase with New Mortgage Seg',
-                      },
+                    name: 'No New Allocation',
+                    transactionType:
+                      'New Registration-HLP Limit Increase with No New Allocation',
+                    prompts: [
+                      PROMPTS.Lawyer.DRAFT_PICKUP,
+                      PROMPTS.Lawyer.HLP03,
+                      PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
                     ],
                   },
                   {
                     id: 2,
-                    name: 'New Registration',
-                    howExistingMtgMove: [
-                      {
-                        id: 1,
-                        name: 'No New Allocation',
-                        transactionType:
-                          'New Registration-HLP Limit Increase with No New Allocation',
-                        prompts: [
-                          PROMPTS.Lawyer.DRAFT_PICKUP,
-                          PROMPTS.Lawyer.HLP03,
-                          PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
-                        ],
-                      },
-                      {
-                        id: 2,
-                        name: 'New RCL Only',
-                        transactionType:
-                          'New Registration-HLP Limit Increase with New RCL Only',
-                        prompts: [
-                          PROMPTS.Lawyer.DRAFT_PICKUP,
-                          PROMPTS.Lawyer.HLP03,
-                          PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
-                        ],
-                      },
-                      {
-                        id: 3,
-                        name: 'New Mortgage Seg',
-                        transactionType:
-                          'New Registration-HLP Limit Increase with New Mortgage Seg',
-                        prompts: [
-                          PROMPTS.Lawyer.DRAFT_PICKUP,
-                          PROMPTS.Lawyer.HLP03,
-                          PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
-                        ],
-                      },
+                    name: 'New RCL Only',
+                    transactionType:
+                      'New Registration-HLP Limit Increase with New RCL Only',
+                    prompts: [
+                      PROMPTS.Lawyer.DRAFT_PICKUP,
+                      PROMPTS.Lawyer.HLP03,
+                      PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
+                    ],
+                  },
+                  {
+                    id: 3,
+                    name: 'New Mortgage Seg',
+                    transactionType:
+                      'New Registration-HLP Limit Increase with New Mortgage Seg',
+                    prompts: [
+                      PROMPTS.Lawyer.DRAFT_PICKUP,
+                      PROMPTS.Lawyer.HLP03,
+                      PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
                     ],
                   },
                 ],
@@ -205,7 +181,7 @@ const layerTree: System[] = [
           },
           {
             layerCount: 3,
-            id: 5,
+            id: 6,
             name: 'Port',
             portTypes: [
               {
@@ -287,7 +263,7 @@ const layerTree: System[] = [
           },
           {
             layerCount: 3,
-            id: 6,
+            id: 7,
             name: 'Port to Owned',
             portTypes: [
               {
@@ -333,7 +309,13 @@ const layerTree: System[] = [
           },
           {
             layerCount: 3,
-            id: 2,
+            id: 3,
+            name: 'No Transferred',
+            transactionType: 'Refinance',
+          },
+          {
+            layerCount: 3,
+            id: 3,
             name: 'Res to HLP',
             borrowerOptions: [
               {
@@ -376,7 +358,7 @@ const layerTree: System[] = [
           },
           {
             layerCount: 3,
-            id: 3,
+            id: 4,
             name: 'HLP to HLP',
             borrowerOptions: [
               {
@@ -389,17 +371,19 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'No New Allocation',
                     transactionType:
-                      'HLP Limit Increase with No New Allocation',
+                      'New Registration-HLP Limit Increase with No New Allocation',
                   },
                   {
                     id: 2,
                     name: 'New RCL Only',
-                    transactionType: 'HLP Limit Increase with New RCL Only',
+                    transactionType:
+                      'New Registration-HLP Limit Increase with New RCL Only',
                   },
                   {
                     id: 3,
                     name: 'New Mortgage Seg',
-                    transactionType: 'HLP Limit Increase with New Mortgage Seg',
+                    transactionType:
+                      'New Registration-HLP Limit Increase with New Mortgage Seg',
                   },
                 ],
               },
@@ -426,7 +410,7 @@ const layerTree: System[] = [
           // FCT Port to Current Owned
           {
             layerCount: 3,
-            id: 6,
+            id: 5,
             name: 'Port to Owned',
             portTypes: [
               {
@@ -455,6 +439,31 @@ const layerTree: System[] = [
                 ],
               },
             ],
+          },
+        ],
+      },
+      {
+        layerCount: 2,
+        id: 3,
+        name: 'Internal',
+        howExistingMtgMove: [
+          {
+            id: 1,
+            name: 'No New Allocation',
+            transactionType:
+              'Within Existing Reg-HLP Limit Increase with No New Allocation',
+          },
+          {
+            id: 2,
+            name: 'New RCL Only',
+            transactionType:
+              'Within Existing Reg-HLP Limit Increase with New RCL Only',
+          },
+          {
+            id: 3,
+            name: 'New Mortgage Seg',
+            transactionType:
+              'Within Existing Reg-HLP Limit Increase with New Mortgage Seg',
           },
         ],
       },

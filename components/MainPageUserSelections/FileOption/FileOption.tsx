@@ -18,6 +18,7 @@ import {
   setPurchaseTypeList,
   setPurchaseType,
   setPromptsList,
+  setHowExistingMtgMove,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const FileOption = () => {
@@ -30,11 +31,10 @@ const FileOption = () => {
   //handle all the envents once user click the bottom
   const onClickHandler = (option: any) => {
     return (e: MouseEvent) => {
-      const name = option.name;
-      dispatch(setFileOption(name));
+      dispatch(setFileOption(option.name));
       if (option.hasOwnProperty('transactionType')) {
         dispatch(setIsPort(false));
-        dispatch(setFinalType(name));
+        dispatch(setFinalType(option.transactionType));
         dispatch(setBorrowerChangeList([]));
         dispatch(setHowExistingMtgMoveList([]));
         dispatch(setMortgageAmountAdjustmentList([]));
@@ -73,6 +73,8 @@ const FileOption = () => {
       dispatch(setPurchaseTypeList([]));
       dispatch(setPurchaseType(''));
       dispatch(setPromptsList([]));
+      dispatch(setHowExistingMtgMoveList([]));
+      dispatch(setHowExistingMtgMove(''));
     };
   };
 

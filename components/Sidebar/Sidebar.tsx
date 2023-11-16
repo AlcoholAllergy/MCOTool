@@ -2,7 +2,7 @@ import ProcessingSystemOptions from './processingSystemOption/ProcessingSystemOp
 
 const Sidebar = () => {
   return (
-    <div className="start-row-2 end-col-2 bg-gray-800 min-w-[230px]">
+    <div className="start-row-2 end-col-2 bg-gray-800 min-w-[200px]">
       <ProcessingSystemOptions />
     </div>
   );

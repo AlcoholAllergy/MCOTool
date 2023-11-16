@@ -17,6 +17,8 @@ import {
   setPurchaseTypeList,
   setPurchaseType,
   setPromptsList,
+  setHowExistingMtgMoveList,
+  setHowExistingMtgMove,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const RegisterParty = () => {
@@ -34,16 +36,32 @@ const RegisterParty = () => {
       const fileOptionsList = registerPartiesList.filter(
         (item) => item.name === selectedRegisterParty,
       )[0].fileOptions;
-      dispatch(setFileOptionList(fileOptionsList));
+      if (fileOptionsList) {
+        dispatch(setFileOptionList(fileOptionsList));
+      }
     }
 
     return () => {};
   }, [selectedRegisterParty, registerPartiesList, dispatch]);
 
   //handle all the envents once user click the bottom
-  const onClickHandler = (name: string) => {
+  const onClickHandler = (party: any) => {
     return (e: MouseEvent) => {
-      dispatch(setCurrentRegisterParty(name));
+      if (party.name === 'Internal') {
+        dispatch(setHowExistingMtgMoveList(party['howExistingMtgMove']));
+        dispatch(setHowExistingMtgMove(''));
+        dispatch(setCurrentRegisterParty(party.name));
+        dispatch(setLayerCount(2));
+        dispatch(setFinalType(''));
+        dispatch(setFileOption(''));
+        dispatch(setFileStatus(''));
+        dispatch(setPurchaseTypeList([]));
+        dispatch(setPurchaseType(''));
+        dispatch(setPromptsList([]));
+        dispatch(setFileOptionList([]));
+        return;
+      }
+      dispatch(setCurrentRegisterParty(party.name));
       dispatch(setLayerCount(2));
       dispatch(setFinalType(''));
       dispatch(setFileOption(''));
@@ -51,6 +69,8 @@ const RegisterParty = () => {
       dispatch(setPurchaseTypeList([]));
       dispatch(setPurchaseType(''));
       dispatch(setPromptsList([]));
+      dispatch(setHowExistingMtgMoveList([]));
+      dispatch(setHowExistingMtgMove(''));
     };
   };
 
@@ -62,7 +82,7 @@ const RegisterParty = () => {
           <a
             className={getCSS(selected)}
             key={party.id}
-            onClick={onClickHandler(party.name)}
+            onClick={onClickHandler(party)}
           >
             {party.name}
           </a>

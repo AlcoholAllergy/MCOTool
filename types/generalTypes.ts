@@ -4,7 +4,7 @@ export type FileStatusTypes =
   | 'OOO Review Incomplete'
   | '';
 
-export type RegisterPartyTypes = 'FCT' | 'Lawyer' | 'FNF' | '';
+export type RegisterPartyTypes = 'FCT' | 'Lawyer' | 'FNF' | 'Internal' | '';
 
 export type hlpOrResTypes = 'Homeline' | 'Residential' | '';
 
@@ -56,12 +56,19 @@ export type System = {
   registerParties: RegisterParty[];
 };
 
-export type RegisterParty = {
-  layerCount: 2;
-  id: number;
-  name: RegisterPartyTypes;
-  fileOptions: FileOption[];
-};
+export type RegisterParty =
+  | {
+      layerCount: 2;
+      id: number;
+      name: RegisterPartyTypes;
+      fileOptions: FileOption[];
+    }
+  | {
+      layerCount: 2;
+      id: number;
+      name: 'Internal';
+      howExistingMtgMove: HowExistingMtgMove[];
+    };
 
 export type FileOption = {
   layerCount: 3;
