@@ -102,6 +102,7 @@ export type AmountAdjustmentType = {
   id: number;
   name: 'Straight' | 'Increase' | 'Decrease';
   transactionType: string;
+  prompts?: string[];
 };
 
 export type BorrowerOption = {

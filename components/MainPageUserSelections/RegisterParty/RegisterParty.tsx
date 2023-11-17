@@ -19,6 +19,7 @@ import {
   setPromptsList,
   setHowExistingMtgMoveList,
   setHowExistingMtgMove,
+  setNotePadNotes,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const RegisterParty = () => {
@@ -28,7 +29,9 @@ const RegisterParty = () => {
     selectedRegisterParty,
     registerPartiesList,
     homelineOrResidential,
+
     port: { isPort },
+    notes: { notePadNotes },
   } = useSelector((state: RootState) => state.userSelect);
 
   useEffect(() => {
@@ -71,6 +74,12 @@ const RegisterParty = () => {
       dispatch(setPromptsList([]));
       dispatch(setHowExistingMtgMoveList([]));
       dispatch(setHowExistingMtgMove(''));
+      if (party.name === 'FCT') {
+        if (notePadNotes.startsWith('CED: ___\n')) {
+          return;
+        }
+        dispatch(setNotePadNotes('CED: ___\n' + notePadNotes));
+      }
     };
   };
 

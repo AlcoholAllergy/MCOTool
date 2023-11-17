@@ -6,6 +6,8 @@ const PROMPTS_NOTES = {
     DISB_LAWYER: 'All recipients set to Lawyer',
     INFO_ONLY: 'MMD Notes: Info Only',
     NO_PENALTY: 'MMD Notes: No Penalty',
+    OPENFORM: 'Purchase prior Sales Open Form',
+    MMD_REQUIRED: 'MMD Notes',
     INFOONLY_AND_NOPENALTY: 'MMD Notes: Info Only & No Penalty',
     DRAFT_PICKUP:
       'Under Disbursement --> Payment Method --> Select “RFT FOR DRAFT PICK UP” --> Disbursement / PAC Amount set to: “$1.00”',

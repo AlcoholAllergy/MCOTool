@@ -5,11 +5,11 @@ import { RootState, AppDispatch } from '@/redux/store';
 import getCSS from '../tabsCSS';
 
 import {
-  setLayerCount,
   setAdjustment,
   setFinalType,
   setFileStatus,
   setPromptsList,
+  setHavePrompt,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const MortgageAmountAdjustment = () => {
@@ -26,6 +26,10 @@ const MortgageAmountAdjustment = () => {
       dispatch(setFinalType(option.transactionType));
       dispatch(setFileStatus(''));
       dispatch(setPromptsList([]));
+      if (option.hasOwnProperty('prompts')) {
+        dispatch(setHavePrompt(true));
+        dispatch(setPromptsList(option['prompts']));
+      }
     };
   };
 
