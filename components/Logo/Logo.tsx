@@ -11,14 +11,13 @@ const Logo = () => {
   };
 
   return (
-    <div className="col-end-2 row-end-2 ">
+    <div className="col-end-2 row-end-2 " onClick={onClickHandler}>
       <Image
         src="/logo.png"
         alt="HECC"
         width={530}
         height={95.99}
         style={{ width: '230px', height: '95.99px' }}
-        onClick={onClickHandler}
       />
     </div>
   );

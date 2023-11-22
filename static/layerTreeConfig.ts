@@ -224,7 +224,7 @@ const layerTree: System[] = [
               {
                 layerCount: 4,
                 id: 2,
-                name: 'Purchase Prior to sale',
+                name: 'Purchase Prior to Sale',
                 mortgageAmountAdjustment: [
                   {
                     layerCount: 5,
@@ -264,7 +264,7 @@ const layerTree: System[] = [
               {
                 layerCount: 4,
                 id: 3,
-                name: 'Sale prior to purcase',
+                name: 'Sale Prior to Purchase',
                 mortgageAmountAdjustment: [
                   {
                     layerCount: 5,
@@ -388,6 +388,7 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'Existing MTG is moving as is into a HLP',
                     transactionType: 'Add/Remove borrower TCO',
+                    prompts: [PROMPTS.FCT.ADD_REMOVE],
                   },
                   {
                     id: 2,
@@ -685,7 +686,7 @@ const layerTree: System[] = [
               {
                 layerCount: 4,
                 id: 2,
-                name: 'Purchase Prior to sale',
+                name: 'Purchase Prior to Sale',
                 mortgageAmountAdjustment: [
                   {
                     layerCount: 5,
@@ -710,7 +711,7 @@ const layerTree: System[] = [
               {
                 layerCount: 4,
                 id: 3,
-                name: 'Sale prior to purcase',
+                name: 'Sale Prior to Purchase',
                 mortgageAmountAdjustment: [
                   {
                     layerCount: 5,
@@ -813,6 +814,7 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'Existing MTG is moving as is',
                     transactionType: 'Add/Remove borrower',
+                    prompts: [PROMPTS.FCT.ADD_REMOVE],
                   },
                   {
                     id: 2,

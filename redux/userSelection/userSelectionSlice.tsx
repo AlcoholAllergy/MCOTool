@@ -9,6 +9,7 @@ import {
   PurchaseTypeNames,
   PurchaseType,
 } from '@/types/generalTypes';
+import { stat } from 'fs';
 
 export interface UserSelectionState {
   currentSelectedSystem:
@@ -48,6 +49,7 @@ export interface UserSelectionState {
     portTypesList: any[];
     adjustment: string;
     mortgageAmountAdjustmentList: any[];
+    mmdRequired: boolean;
   };
 
   fileStatus: FileStatusTypes;
@@ -93,6 +95,7 @@ const initialState: UserSelectionState = {
     portTypesList: [],
     adjustment: '',
     mortgageAmountAdjustmentList: [],
+    mmdRequired: false,
   },
 
   havePrompt: false,
@@ -152,6 +155,9 @@ const UserSelectionSlice = createSlice({
     },
     setIsPort: (state, action) => {
       state.port.isPort = action.payload;
+    },
+    setMmdRequired: (state, action) => {
+      state.port.mmdRequired = action.payload;
     },
     setPortType: (state, action) => {
       state.port.portType = action.payload;
@@ -250,6 +256,7 @@ export const {
   setWithinOrNewReg,
   setWithinOrNewRegList,
   setPortTypesList,
+  setMmdRequired,
   setMortgageAmountAdjustmentList,
   setHowExistingMtgMove,
   setHowExistingMtgMoveList,

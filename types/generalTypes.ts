@@ -91,8 +91,8 @@ export type PortType = {
   id: number;
   name:
     | 'Same-day'
-    | 'Purchase Prior to sale'
-    | 'Sale prior to purcase'
+    | 'Purchase Prior to Sale'
+    | 'Sale Prior to Purchase'
     | 'Port to current Owned Property has to be a Same-day port';
   mortgageAmountAdjustment: AmountAdjustmentType[];
 };

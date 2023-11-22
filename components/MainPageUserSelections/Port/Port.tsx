@@ -13,6 +13,7 @@ import {
   setFileStatus,
   setAdjustment,
   setPromptsList,
+  setMmdRequired,
 } from '@/redux/userSelection/userSelectionSlice';
 
 const Port = () => {
@@ -25,6 +26,7 @@ const Port = () => {
   //handle all the envents once user click the bottom
   const onClickHandler = (option: any) => {
     return (e: MouseEvent) => {
+      const needMMD = option.name in ['Same-day', 'Purchase Prior to Sale'];
       dispatch(setPortType(option.name));
       dispatch(setLayerCount(4));
       dispatch(
@@ -35,6 +37,11 @@ const Port = () => {
       dispatch(setFileStatus(''));
       dispatch(setAdjustment(''));
       dispatch(setPromptsList([]));
+      if (needMMD) {
+        dispatch(setMmdRequired(true));
+      } else {
+        dispatch(setMmdRequired(false));
+      }
     };
   };
 

@@ -15,6 +15,7 @@ const PROMPTS_NOTES = {
   FCT: {
     TCO_PROMO: 'Transfer Promo when remaining balance above $100,000',
     SWITCH_IN: 'Transfer Promo when mtg amount above $25,000',
+    ADD_REMOVE: 'Please verify that the borrower changes have been made.',
   },
 };
 

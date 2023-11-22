@@ -58,6 +58,7 @@ const CONDITIONS: ConditionNotes = {
     'Regular Purchase': RESIDENTIALREGULAR,
     'Switch-in from OFI': RESIDENTIALREGULAR,
     Refinance: RESIDENTIALREGULAR,
+    FTHBI: RESIDENTIALREGULAR + '\n\n' + FTHBI,
     'Refinance Add-on': RESIDENTIALREGULAR,
     'Add/Remove borrower':
       RES_TO_RES_BORROWER_CHANGE + '\n\n' + RESIDENTIALREGULAR,
