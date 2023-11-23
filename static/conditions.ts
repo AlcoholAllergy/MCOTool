@@ -17,7 +17,7 @@ const RES_TO_RES_BORROWER_CHANGE = `This is a refinance of an existing mortgage 
 const CONDITIONS: ConditionNotes = {
   Homeline: {
     'Regular Purchase': HOMELINEREGULAR,
-    FTHBI: HOMELINEREGULAR + '\n\n' + FTHBI,
+    FTHBI: FTHBI + '\n\n' + HOMELINEREGULAR,
     'Purchase Plus': HOMELINEREGULAR,
     'Switch-in from OFI': HOMELINEREGULAR,
     TCO: HOMELINEREGULAR,
@@ -58,7 +58,7 @@ const CONDITIONS: ConditionNotes = {
     'Regular Purchase': RESIDENTIALREGULAR,
     'Switch-in from OFI': RESIDENTIALREGULAR,
     Refinance: RESIDENTIALREGULAR,
-    FTHBI: RESIDENTIALREGULAR + '\n\n' + FTHBI,
+    FTHBI: FTHBI + '\n\n' + RESIDENTIALREGULAR,
     'Refinance Add-on': RESIDENTIALREGULAR,
     'Add/Remove borrower':
       RES_TO_RES_BORROWER_CHANGE + '\n\n' + RESIDENTIALREGULAR,

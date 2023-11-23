@@ -520,6 +520,7 @@ const layerTree: System[] = [
     currentSystem: 'Linx',
     homelineOrResidential: 'Residential',
     registerParties: [
+      //Lawyer
       {
         layerCount: 2,
         id: 1,
@@ -573,6 +574,7 @@ const layerTree: System[] = [
                     id: 2,
                     name: 'New MTG has new funds & new term',
                     transactionType: 'Refinance',
+                    prompts: [PROMPTS.Lawyer.DISB_LAWYER],
                   },
                 ],
               },
@@ -625,11 +627,16 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'New MTG has new funds & remaining term',
                     transactionType: 'Refinance Add-on',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.NO_PENALTY,
+                    ],
                   },
                   {
                     id: 2,
                     name: 'New MTG has new funds & new term',
                     transactionType: 'Refinance',
+                    prompts: [PROMPTS.Lawyer.DISB_LAWYER],
                   },
                 ],
               },
@@ -643,11 +650,16 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'New MTG has new funds & remaining term',
                     transactionType: 'Refinance Add-on',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.NO_PENALTY,
+                    ],
                   },
                   {
                     id: 2,
                     name: 'New MTG has new funds & new term',
                     transactionType: 'Refinance',
+                    prompts: [PROMPTS.Lawyer.DISB_LAWYER],
                   },
                 ],
               },

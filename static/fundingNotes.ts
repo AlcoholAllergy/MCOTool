@@ -244,28 +244,34 @@ Please refund penalty on existing mortgage`,
 ( ) FREE AND CLEAR
 ( ) SWITCH
 ( ) EXISTING RBC MTG#
+
 Existing Sale Property Mtg#
 Will be paid by Lawyer
+
 (x) STRAIGHT / ( ) INCREASE / ( ) DECREASE
-( ) SAMEDAY
+(x) SAMEDAY
 Ext COF:`,
   PTW_INCREASE: `Attn Funding/MIP:
 ( ) FREE AND CLEAR
 ( ) SWITCH
 ( ) EXISTING RBC MTG#
+
 Existing Sale Property Mtg#
 Will be paid by Lawyer
+
 ( ) STRAIGHT / (x) INCREASE / ( ) DECREASE
-( ) SAMEDAY
+(x) SAMEDAY
 Ext COF:`,
   PTW_DECREASE: `Attn Funding/MIP:
 ( ) FREE AND CLEAR
 ( ) SWITCH
 ( ) EXISTING RBC MTG#
+
 Existing Sale Property Mtg#
 Will be paid by Lawyer
+
 ( ) STRAIGHT / ( ) INCREASE / (x) DECREASE
-( ) SAMEDAY
+(x) SAMEDAY
 Ext COF:`,
 };
 

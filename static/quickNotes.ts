@@ -13,19 +13,15 @@ const QUICK_NOTES_LIST = [
   },
   {
     id: 4,
-    value: 'Property address updated. Revised files sent for registration.',
-  },
-  {
-    id: 5,
     value: 'ATTN CAC: liability exclusion reason updated. Please re-approve.',
   },
   {
-    id: 6,
+    id: 5,
     value:
       'ATTN CAC: closing date updated. Mortgage details re-pulled. Please re-approve.',
   },
   {
-    id: 7,
+    id: 6,
     value: 'Files sent for registration.',
   },
 ];
