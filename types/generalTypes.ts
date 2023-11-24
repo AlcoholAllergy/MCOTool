@@ -75,6 +75,7 @@ export type FileOption = {
   id: number;
   name: string;
   transactionType?: string;
+  prompts?: string[];
   borrowerOptions?: BorrowerOption[];
   portTypes?: PortType[];
   purchaseTypes?: PurchaseType[];

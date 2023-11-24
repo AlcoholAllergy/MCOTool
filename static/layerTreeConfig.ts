@@ -45,6 +45,7 @@ const layerTree: System[] = [
             id: 3,
             name: 'No Transferred',
             transactionType: 'Refinance',
+            prompts: [PROMPTS.Lawyer.DISB_LAWYER],
           },
           {
             layerCount: 3,
@@ -550,9 +551,17 @@ const layerTree: System[] = [
             name: 'Switch-in from OFI',
             transactionType: 'Switch-in from OFI',
           },
+
           {
             layerCount: 3,
             id: 3,
+            name: 'No Transferred',
+            transactionType: 'Refinance',
+            prompts: [PROMPTS.Lawyer.DISB_LAWYER],
+          },
+          {
+            layerCount: 3,
+            id: 4,
             name: 'Res to Res',
             borrowerOptions: [
               {
@@ -614,7 +623,7 @@ const layerTree: System[] = [
           },
           {
             layerCount: 3,
-            id: 4,
+            id: 5,
             name: 'HLP to Res',
             borrowerOptions: [
               {
@@ -667,7 +676,7 @@ const layerTree: System[] = [
           },
           {
             layerCount: 3,
-            id: 5,
+            id: 6,
             name: 'Port',
             portTypes: [
               {
@@ -680,18 +689,30 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'Straight',
                     transactionType: 'Same-day Straight Port',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.MMD_REQUIRED,
+                    ],
                   },
                   {
                     layerCount: 5,
                     id: 2,
                     name: 'Increase',
                     transactionType: 'Same-day Increase Port',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.MMD_REQUIRED,
+                    ],
                   },
                   {
                     layerCount: 5,
                     id: 3,
                     name: 'Decrease',
                     transactionType: 'Same-day Decrease Port',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.MMD_REQUIRED,
+                    ],
                   },
                 ],
               },
@@ -705,18 +726,30 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'Straight',
                     transactionType: 'Purchase Prior to sale Straight Port',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.MMD_REQUIRED,
+                    ],
                   },
                   {
                     layerCount: 5,
                     id: 2,
                     name: 'Increase',
                     transactionType: 'Purchase Prior to sale Increase Port',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.MMD_REQUIRED,
+                    ],
                   },
                   {
                     layerCount: 5,
                     id: 3,
                     name: 'Decrease',
                     transactionType: 'Purchase Prior to sale Decrease Port',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.MMD_REQUIRED,
+                    ],
                   },
                 ],
               },
@@ -749,7 +782,7 @@ const layerTree: System[] = [
           },
           {
             layerCount: 3,
-            id: 6,
+            id: 7,
             name: 'Port to Owned',
             portTypes: [
               {
@@ -762,18 +795,30 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'Straight',
                     transactionType: 'Same-day Straight Port',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.MMD_REQUIRED,
+                    ],
                   },
                   {
                     layerCount: 5,
                     id: 2,
                     name: 'Increase',
                     transactionType: 'Same-day Increase Port',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.MMD_REQUIRED,
+                    ],
                   },
                   {
                     layerCount: 5,
                     id: 3,
                     name: 'Decrease',
                     transactionType: 'Same-day Decrease Port',
+                    prompts: [
+                      PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.MMD_REQUIRED,
+                    ],
                   },
                 ],
               },
@@ -792,6 +837,13 @@ const layerTree: System[] = [
             id: 1,
             name: 'Switch-in from OFI',
             transactionType: 'Switch-in from OFI',
+          },
+
+          {
+            layerCount: 3,
+            id: 2,
+            name: 'No Transferred',
+            transactionType: 'Refinance',
           },
           {
             layerCount: 3,

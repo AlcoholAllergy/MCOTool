@@ -42,6 +42,9 @@ const FileOption = () => {
         dispatch(setPurchaseTypeList([]));
         dispatch(setPurchaseType(''));
         dispatch(setPromptsList([]));
+        if (option.hasOwnProperty('prompts')) {
+          dispatch(setPromptsList(option.prompts));
+        }
         return;
       } else if (option.hasOwnProperty('purchaseTypes')) {
         dispatch(setFileStatus(''));
