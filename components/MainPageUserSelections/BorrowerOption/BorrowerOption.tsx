@@ -40,6 +40,8 @@ const BorrowerOption = () => {
         dispatch(setHowExistingMtgMoveList(option.howExistingMtgMove));
         dispatch(setFinalType(''));
         dispatch(setHowExistingMtgMove(''));
+
+        dispatch(setPromptsList([]));
         return;
       }
       //when the file is a homeline increase
