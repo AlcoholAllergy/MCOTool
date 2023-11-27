@@ -15,6 +15,8 @@ import {
   setPurchaseType,
   setPurchaseTypeList,
   setPromptsList,
+  setHowExistingMtgMoveList,
+  setHowExistingMtgMove,
 } from '@/redux/userSelection/userSelectionSlice';
 
 interface SystemItemProps {
@@ -62,6 +64,8 @@ const SystemItem = ({
     dispatch(setPurchaseType(''));
     dispatch(setPurchaseTypeList([]));
     dispatch(setPromptsList([]));
+    dispatch(setHowExistingMtgMove(''));
+    dispatch(setHowExistingMtgMoveList([]));
   };
 
   const disableList = ['Casper-Homeline', 'Casper-Residential'];
