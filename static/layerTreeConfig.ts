@@ -729,6 +729,7 @@ const layerTree: System[] = [
                     prompts: [
                       PROMPTS.Lawyer.DISB_LAWYER,
                       PROMPTS.Lawyer.MMD_REQUIRED,
+                      PROMPTS.Lawyer.OPENFORM,
                     ],
                   },
                   {
@@ -739,6 +740,7 @@ const layerTree: System[] = [
                     prompts: [
                       PROMPTS.Lawyer.DISB_LAWYER,
                       PROMPTS.Lawyer.MMD_REQUIRED,
+                      PROMPTS.Lawyer.OPENFORM,
                     ],
                   },
                   {
@@ -749,6 +751,7 @@ const layerTree: System[] = [
                     prompts: [
                       PROMPTS.Lawyer.DISB_LAWYER,
                       PROMPTS.Lawyer.MMD_REQUIRED,
+                      PROMPTS.Lawyer.OPENFORM,
                     ],
                   },
                 ],
