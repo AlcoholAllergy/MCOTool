@@ -32,14 +32,14 @@ Ext COF:
 
 export const HOLDING_COMPANY = `\n\nATTN MIP: Holding Company
 Upon Activation, please change SRF details
-Company Name:
-Company SRF:
+Company Name: 
+Company SRF: 
 
-Co-Borrower Name:
-Co-Borrower SRF:
+Co-Borrower Name: 
+Co-Borrower SRF: 
 
-Co-Borrower Name:
-Co-Borrower SRF:
+Co-Borrower Name: 
+Co-Borrower SRF: 
 `;
 
 const ADD_REMOVE = {

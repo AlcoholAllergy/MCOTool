@@ -22,6 +22,7 @@ const ToggleTool: React.FC<ToggleToolProps> = ({ label }) => {
     if (label === 'RCL only') {
       dispatch(setRclOnly(!rclOnly));
     } else if (label === 'holding company') {
+      dispatch(setRclOnly(false));
       dispatch(setHoldingCompany(!holdingCompany));
     }
   };
