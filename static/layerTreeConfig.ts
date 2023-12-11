@@ -597,10 +597,7 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'Existing MTG is moving as is',
                     transactionType: 'Add/Remove borrower',
-                    prompts: [
-                      PROMPTS.Lawyer.DISB_LAWYER,
-                      PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
-                    ],
+                    prompts: [PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY],
                   },
                   {
                     id: 2,
