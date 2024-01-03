@@ -441,6 +441,7 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'Existing HLP MTG segs moving as is',
                     transactionType: 'Add/Remove borrower',
+                    prompts: [PROMPTS.FCT.AC_REQUIRED],
                   },
                   {
                     id: 2,
