@@ -29,8 +29,8 @@ const InputComponent: React.FC<InputComponentProps> = ({
     setEmployeeId(e.target.value);
   };
 
-  const onclickHandler = async () => {
-    await navigator.clipboard.writeText(employeeId);
+  const onclickHandler = () => {
+    navigator.clipboard.writeText(employeeId);
   };
 
   return (
