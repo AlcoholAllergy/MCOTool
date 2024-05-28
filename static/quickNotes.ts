@@ -24,6 +24,11 @@ const QUICK_NOTES_LIST = [
     id: 6,
     value: 'Files sent for registration.',
   },
+  {
+    id: 7,
+    value:
+      'Please note we cannot process this file as XXXX as the remaining term of the existing mortgage is less than 3 months. Please renew the rate or let the client has new rate and term.',
+  },
 ];
 
 export default QUICK_NOTES_LIST;
