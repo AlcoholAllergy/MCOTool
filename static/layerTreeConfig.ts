@@ -90,17 +90,13 @@ const layerTree: System[] = [
                       PROMPTS.Lawyer.DRAFT_PICKUP,
                       PROMPTS.Lawyer.HLP03,
                       PROMPTS.Lawyer.INFOONLY_AND_NOPENALTY,
-                      PROMPTS.Lawyer.AC_REQUIRED,
                     ],
                   },
                   {
                     id: 2,
                     name: 'HLP MTG seg has a new term',
                     transactionType: 'Refinance',
-                    prompts: [
-                      PROMPTS.Lawyer.DISB_LAWYER,
-                      PROMPTS.Lawyer.AC_REQUIRED,
-                    ],
+                    prompts: [PROMPTS.Lawyer.DISB_LAWYER],
                   },
                 ],
               },
