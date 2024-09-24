@@ -17,7 +17,7 @@ const QUICK_NOTES_LIST = [
   },
   {
     id: 5,
-    value: 'Layer is not a Telus member, files sent via RightFax.',
+    value: 'Lawyer is not a Telus member, files sent via RightFax.',
   },
   {
     id: 6,
