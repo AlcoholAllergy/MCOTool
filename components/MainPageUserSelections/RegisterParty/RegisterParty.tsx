@@ -62,6 +62,7 @@ const RegisterParty = () => {
         dispatch(setPurchaseType(''));
         dispatch(setPromptsList([]));
         dispatch(setFileOptionList([]));
+        dispatch(setNotePadNotes(''));
         return;
       }
       dispatch(setCurrentRegisterParty(party.name));
@@ -74,8 +75,9 @@ const RegisterParty = () => {
       dispatch(setPromptsList([]));
       dispatch(setHowExistingMtgMoveList([]));
       dispatch(setHowExistingMtgMove(''));
+      dispatch(setNotePadNotes(''));
       if (party.name === 'FCT') {
-        if (notePadNotes.startsWith('CED: ___\n')) {
+        if (notePadNotes.startsWith('CED')) {
           return;
         }
         dispatch(setNotePadNotes('CED: ___\n' + notePadNotes));

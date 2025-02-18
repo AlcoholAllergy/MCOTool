@@ -17,6 +17,7 @@ import {
   setPromptsList,
   setHowExistingMtgMoveList,
   setHowExistingMtgMove,
+  setNotePadNotes,
 } from '@/redux/userSelection/userSelectionSlice';
 
 interface SystemItemProps {
@@ -66,6 +67,7 @@ const SystemItem = ({
     dispatch(setPromptsList([]));
     dispatch(setHowExistingMtgMove(''));
     dispatch(setHowExistingMtgMoveList([]));
+    dispatch(setNotePadNotes(''));
   };
 
   const disableList = ['Casper-Homeline', 'Casper-Residential'];

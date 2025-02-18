@@ -21,7 +21,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
   ...props
 }) => {
   const Component = as === 'input' ? 'input' : 'textarea';
-  const [employeeId, setEmployeeId] = useState('');
+  const [employeeId, setEmployeeId] = useState<string>('');
 
   const onChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
