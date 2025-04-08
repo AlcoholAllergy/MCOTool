@@ -38,6 +38,11 @@ const QUICK_NOTES_LIST = [
     value:
       'Please note we cannot process this file as XXXX as the remaining term of the existing mortgage is less than 3 months. Please renew the rate or let the client has new rate and term.',
   },
+  {
+    id: 10,
+    value:
+      'ATTN funding: please verify property insurance in order before activation. Thank you',
+  },
 ];
 
 export default QUICK_NOTES_LIST;
