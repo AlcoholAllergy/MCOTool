@@ -43,6 +43,11 @@ const QUICK_NOTES_LIST = [
     value:
       'ATTN funding: please verify property insurance in order before activation. Thank you',
   },
+  {
+    id: 11,
+    value:
+      'Please check the following comments and provide the missing info. /nThank you',
+  },
 ];
 
 export default QUICK_NOTES_LIST;
