@@ -46,7 +46,12 @@ const QUICK_NOTES_LIST = [
   {
     id: 11,
     value:
-      'Please check the following comments and provide the missing info. /nThank you',
+      'Please check the following comments and provide the missing info. Thank you',
+  },
+  {
+    id: 12,
+    value:
+      'Homeline increase exceed the existing reg amount $xxx. New registration required. Please complete the registration details in Linx(Lawyer/FCT).',
   },
 ];
 
