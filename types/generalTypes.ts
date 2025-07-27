@@ -110,9 +110,11 @@ export type BorrowerOption = {
   layerCount: 4;
   id: number;
   name: string;
-  ifBorrowerChange: boolean;
+  ifBorrowerChange?: boolean;
+  transactionType?: string;
   howExistingMtgMove?: HowExistingMtgMove[];
   withinOrNewReg?: WithinOrNewReg[];
+  prompts?: string[];
 };
 
 export type WithinOrNewReg = {

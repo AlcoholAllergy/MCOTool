@@ -126,6 +126,24 @@ RCL/Mortgage Allocation    ( x )
 Special instructions:
 
 Attn MIP: COB required for the new mtg`,
+  Migrated_Within_Existing_Limit: `
+ATTN Funding/MIP: Refinance/Re-allocation of exisitng HLP (Migrated EPM) - to be treaded as refinance port
+
+(x)EXISTING RBC HLP# (MTG segment/s #)
+(x)STRAIGHT
+(X)SAMEDAY
+Ext COF:
+
+Attention Advancer: New HLP limit is within the migrated collateral charge registration amount. Please do not charge client FCT fee and charge to GL 9928615 - Registration COsts at transit 07573.
+`,
+  Migrated_Exceed_Existing_Limit: `
+ATTN Funding/MIP: Refinance/Re-allocation of exisitng HLP (Migrated EPM) - to be treaded as refinance port
+
+(x)EXISTING RBC HLP# (MTG segment/s #)
+(x)STRAIGHT
+(X)SAMEDAY
+Ext COF:
+`,
 };
 
 const PORT = {
@@ -289,6 +307,10 @@ const FUNDINGNOTES: FundingNotes = {
       HOMELINEINCREASE.HLP_INC_NEWREG_RCLONLY,
     'New Registration-HLP Limit Increase with New Mortgage Seg':
       HOMELINEINCREASE.HLP_INC_NEWREG_NEWMTG,
+    'Migrated Within Existing Limit':
+      HOMELINEINCREASE.Migrated_Within_Existing_Limit,
+    'Migrated Exceed Existing Limit':
+      HOMELINEINCREASE.Migrated_Exceed_Existing_Limit,
     'Purchase Prior to sale Straight Port': PORT.PPS_STRAIGHT,
     'Purchase Prior to sale Increase Port': PORT.PPS_INCREASE,
     'Purchase Prior to sale Decrease Port': PORT.PPS_DECREASE,

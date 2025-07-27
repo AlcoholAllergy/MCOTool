@@ -14,9 +14,11 @@ const PROMPTS_NOTES = {
   },
   FCT: {
     TCO_PROMO: 'Transfer Promo when remaining balance above $100,000',
-    SWITCH_IN: 'Transfer Promo when mtg amount above $25,000',
+    SWITCH_IN:
+      'Transfer Promo when mtg amount above $100,000( $75,000 for MSNWO, Quebec and Atlantic)',
     ADD_REMOVE: 'Please verify that the borrower changes have been made.',
     AC_REQUIRED: 'New HLP AC# is required.',
+    SAME_TRANSIT: 'Transit# match with the existing HLP transit#',
   },
 };
 

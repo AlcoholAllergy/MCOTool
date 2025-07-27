@@ -178,6 +178,7 @@ const layerTree: System[] = [
                   },
                 ],
               },
+              // HLP TO HLP - HSBC Migration
             ],
           },
           {
@@ -344,18 +345,22 @@ const layerTree: System[] = [
         id: 2,
         name: 'FCT',
         fileOptions: [
+          // FCT Switch-in from OFI
           {
             layerCount: 3,
             id: 1,
             name: 'Switch-in from OFI',
             transactionType: 'Switch-in from OFI',
+            prompts: [PROMPTS.FCT.SWITCH_IN],
           },
+          // FCT No Transferred
           {
             layerCount: 3,
             id: 3,
             name: 'No Transferred',
             transactionType: 'Refinance',
           },
+          // FCT Res to HLP
           {
             layerCount: 3,
             id: 3,
@@ -371,6 +376,7 @@ const layerTree: System[] = [
                     id: 1,
                     name: 'Existing MTG is moving as is into a HLP',
                     transactionType: 'TCO',
+                    prompts: [PROMPTS.FCT.TCO_PROMO],
                   },
                   {
                     id: 2,
@@ -400,6 +406,7 @@ const layerTree: System[] = [
               },
             ],
           },
+          // FCT HLP to HLP
           {
             layerCount: 3,
             id: 4,
@@ -416,18 +423,21 @@ const layerTree: System[] = [
                     name: 'No New Allocation',
                     transactionType:
                       'New Registration-HLP Limit Increase with No New Allocation',
+                    prompts: [PROMPTS.FCT.SAME_TRANSIT],
                   },
                   {
                     id: 2,
                     name: 'New RCL Only',
                     transactionType:
                       'New Registration-HLP Limit Increase with New RCL Only',
+                    prompts: [PROMPTS.FCT.SAME_TRANSIT],
                   },
                   {
                     id: 3,
                     name: 'New Mortgage Seg',
                     transactionType:
                       'New Registration-HLP Limit Increase with New Mortgage Seg',
+                    prompts: [PROMPTS.FCT.SAME_TRANSIT],
                   },
                 ],
               },
@@ -447,6 +457,27 @@ const layerTree: System[] = [
                     id: 2,
                     name: 'Existing HLP MTG segs not moving as is',
                     transactionType: 'Refinance',
+                  },
+                ],
+              },
+              // HLP TO HLP - HSBC Migration
+              {
+                layerCount: 4,
+                id: 2,
+                name: 'HSBC Migrated',
+
+                howExistingMtgMove: [
+                  {
+                    id: 1,
+                    name: 'Within Existing Limit & Provided Title Search',
+                    transactionType: 'Migrated Within Existing Limit',
+                    prompts: [],
+                  },
+                  {
+                    id: 2,
+                    name: 'Homeline Increase Exceed Existing Limit',
+                    transactionType: 'Migrated Exceed Existing Limit',
+                    prompts: [],
                   },
                 ],
               },
@@ -487,6 +518,7 @@ const layerTree: System[] = [
           },
         ],
       },
+      //Internal
       {
         layerCount: 2,
         id: 3,
