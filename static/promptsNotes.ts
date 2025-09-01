@@ -4,6 +4,7 @@ const PROMPTS_NOTES = {
     HLP03: 'Condition HLP03 required.',
     HLP01E: 'Condition HLP01E required.',
     DISB_LAWYER: 'All recipients set to Lawyer',
+    PAYOUT:'condition lawyer to payout existing debts',
     INFO_ONLY: 'MMD Notes: Info Only',
     NO_PENALTY: 'MMD Notes: No Penalty',
     OPENFORM: 'Purchase prior Sales Open Form',

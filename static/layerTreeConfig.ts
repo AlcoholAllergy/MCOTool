@@ -169,11 +169,12 @@ const layerTree: System[] = [
                   },
                   {
                     id: 2,
-                    name: 'Existing HLP MTG segs not moving as is',
+                    name: 'Existing HLP MTG segs not moving as is / Existing HLP is RCL only',
                     transactionType: 'Refinance',
                     prompts: [
                       PROMPTS.Lawyer.AC_REQUIRED,
                       PROMPTS.Lawyer.DISB_LAWYER,
+                      PROMPTS.Lawyer.PAYOUT,
                     ],
                   },
                 ],
